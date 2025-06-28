@@ -1,89 +1,310 @@
+<!--
+  Flutter Equivalent: MaterialApp(
+    title: 'Liquid Glass Mockup',
+    theme: ThemeData(
+      useMaterial3: true,
+      // Add your theme configurations here
+    ),
+    home: PhoneFrame(),
+  )
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Liquid Glass Mockup</title>
+    <!-- Font Awesome for icons - In Flutter, use IconData from material icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Shame CSS (temporary fixes) -->
+    <link rel="stylesheet" href="css/shame.css">
 </head>
 <body>
-    <div class="iphone-frame">
-        <div class="screen">
-            <div class="notch"></div>
+    <!--
+      Flutter Equivalent:
+      class PhoneFrame extends StatelessWidget {
+        @override
+        Widget build(BuildContext context) {
+          return Container(
+            width: 375,
+            height: 812,
+            decoration: BoxDecoration(
+              color: Colors.black,
+              borderRadius: BorderRadius.circular(50),
+              // Add shadow and other decorations as needed
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(40),
+              child: AppScreen(),
+            ),
+          );
+        }
+      }
+    -->
+    <div class="app-viewport">
             <div class="app-container">
+                <!-- Background with gradient overlay - In Flutter, use BoxDecoration with gradient -->
                 <div class="background">
                     <div class="gradient-overlay"></div>
                 </div>
-                
+
+                <!--
+                  Flutter Equivalent:
+                  class DiscoveryScreen extends StatelessWidget {
+                    @override
+                    Widget build(BuildContext context) {
+                      return Scaffold(
+                        backgroundColor: Colors.transparent,
+                        appBar: AppBar(
+                          title: Text('Discovery'),
+                          backgroundColor: Colors.white.withOpacity(0.8),
+                          elevation: 0,
+                          actions: [
+                            // New Post Button
+                            Padding(
+                              padding: EdgeInsets.only(right: 16.0),
+                              child: ElevatedButton.icon(
+                                onPressed: () {},
+                                icon: Icon(Icons.add),
+                                label: Text('New Post'),
+                                style: ElevatedButton.styleFrom(
+                                  // Match glass button style
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        body: ProductFeed(),
+                      );
+                    }
+                  }
+                -->
                 <main class="main-content">
+                    <!-- App Bar with Glass Effect -->
                     <header class="page-header">
                         <h1 class="page-title">Discovery</h1>
-                        <button class="new-post-button glass-button">
-                            <i class="fas fa-plus"></i>
-                            <span>New Post</span>
+                        <button type="button" class="new-post-button" aria-label="Create new post">
+                            <i class="fas fa-plus" aria-hidden="true"></i>
                         </button>
                     </header>
-                    
+
+                    <!--
+                      Flutter Equivalent:
+                      class ProductFeed extends StatelessWidget {
+                        @override
+                        Widget build(BuildContext context) {
+                          return ListView.builder(
+                            padding: EdgeInsets.only(bottom: 80), // Space for bottom nav
+                            itemCount: products.length,
+                            itemBuilder: (context, index) {
+                              return ProductCard(product: products[index]);
+                            },
+                          );
+                        }
+                      }
+                    -->
                     <section class="product-feed">
-                        <!-- Product Card 1 -->
+                        <!-- Vintage Clothing Item 1 -->
                         <article class="product-card">
-                            <div class="product-image">
-                                <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGV1ZDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Casual White Shirt">
+                            <div class="product-text-overlay">
+                                <h3 class="product-name">1970s Denim Jacket</h3>
+                                <p class="product-description">Authentic vintage Levi's denim jacket with original wash. Size large, excellent condition.</p>
+                                <div class="product-meta">
+                                    <span class="seller">By Retro Threads</span>
+                                    <span class="price">$89.99</span>
+                                </div>
                             </div>
-                            <div class="product-info">
-                                <div class="product-text">
-                                    <h3 class="product-name">Classic White Tee</h3>
-                                    <p class="product-description">Premium cotton crew neck t-shirt for men. Perfect for casual outings and layering.</p>
-                                    <span class="product-price">$29.99</span>
+                            <div class="product-image">
+                                <img src="images/alexandra-gorn-WF0LSThlRmw-unsplash.jpg"
+                                     alt="Vintage 1970s Denim Jacket"
+                                     loading="lazy"
+                                     class="product-img">
+                                <div class="product-actions">
+                                    <button type="button" class="action-button like-button" aria-label="Like">
+                                        <i class="far fa-heart" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" class="action-button save-button" aria-label="Save">
+                                        <i class="far fa-bookmark" aria-hidden="true"></i>
+                                    </button>
                                 </div>
                             </div>
                         </article>
 
-                        <!-- Product Card 2 -->
+                        <!-- Vintage Clothing Item 2 -->
                         <article class="product-card">
-                            <div class="product-image">
-                                <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGV1ZDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Denim Jacket">
+                            <div class="product-text-overlay">
+                                <h3 class="product-name">Retro Floral Dress</h3>
+                                <p class="product-description">1980s floral wrap dress with puff sleeves. Perfect summer vintage find, size medium.</p>
+                                <div class="product-meta">
+                                    <span class="seller">By Vintage Vault</span>
+                                    <span class="price">$65.50</span>
+                                </div>
                             </div>
-                            <div class="product-info">
-                                <div class="product-text">
-                                    <h3 class="product-name">Vintage Denim Jacket</h3>
-                                    <p class="product-description">Classic blue denim jacket with a worn-in look. Features button-up front and chest pockets.</p>
-                                    <span class="product-price">$89.99</span>
+                            <div class="product-image">
+                                <img src="images/girl-with-red-hat-qyy6pmM2Hg8-unsplash.jpg"
+                                     alt="Vintage Floral Dress"
+                                     loading="lazy"
+                                     class="product-img">
+                                <div class="product-actions">
+                                    <button type="button" class="action-button like-button" aria-label="Like">
+                                        <i class="far fa-heart" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" class="action-button save-button" aria-label="Save">
+                                        <i class="far fa-bookmark" aria-hidden="true"></i>
+                                    </button>
                                 </div>
                             </div>
                         </article>
 
-                        <!-- Product Card 3 -->
+                        <!-- Vintage Clothing Item 3 -->
                         <article class="product-card">
-                            <div class="product-image">
-                                <img src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGV1ZDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Summer Dress">
+                            <div class="product-text-overlay">
+                                <h3 class="product-name">Leather Biker Jacket</h3>
+                                <p class="product-description">Vintage 1990s black leather moto jacket. Genuine leather with quilted shoulders.</p>
+                                <div class="product-meta">
+                                    <span class="seller">By Retro Classics</span>
+                                    <span class="price">$129.99</span>
+                                </div>
                             </div>
-                            <div class="product-info">
-                                <div class="product-text">
-                                    <h3 class="product-name">Floral Summer Dress</h3>
-                                    <p class="product-description">Lightweight floral print dress with short sleeves and a flared skirt. Perfect for warm days.</p>
-                                    <span class="product-price">$59.99</span>
+                            <div class="product-image">
+                                <img src="images/cristofer-maximilian-AqLIkOzWDAk-unsplash.jpg"
+                                     alt="Vintage Leather Biker Jacket"
+                                     loading="lazy"
+                                     class="product-img">
+                                <div class="product-actions">
+                                    <button type="button" class="action-button like-button" aria-label="Like">
+                                        <i class="far fa-heart" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" class="action-button save-button" aria-label="Save">
+                                        <i class="far fa-bookmark" aria-hidden="true"></i>
+                                    </button>
                                 </div>
                             </div>
                         </article>
 
-                        <!-- Product Card 4 -->
+                        <!-- Vintage Clothing Item 4 -->
                         <article class="product-card">
-                            <div class="product-image">
-                                <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGV1ZDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Leather Boots">
+                            <div class="product-text-overlay">
+                                <h3 class="product-name">Retro High-Waist Jeans</h3>
+                                <p class="product-description">1980s high-waist straight leg jeans. Light wash with minimal distressing.</p>
+                                <div class="product-meta">
+                                    <span class="seller">By Denim Revival</span>
+                                    <span class="price">$74.99</span>
+                                </div>
                             </div>
-                            <div class="product-info">
-                                <div class="product-text">
-                                    <h3 class="product-name">Leather Ankle Boots</h3>
-                                    <p class="product-description">Genuine leather boots with a chunky sole and side zipper. Comfortable for all-day wear.</p>
-                                    <span class="product-price">$129.99</span>
+                            <div class="product-image">
+                                <img src="images/crew-EMWgB-BTyh0-unsplash.jpg"
+                                     alt="Vintage High-Waist Jeans"
+                                     loading="lazy"
+                                     class="product-img">
+                                <div class="product-actions">
+                                    <button type="button" class="action-button like-button" aria-label="Like">
+                                        <i class="far fa-heart" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" class="action-button save-button" aria-label="Save">
+                                        <i class="far fa-bookmark" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Post 5 -->
+                        <article class="product-card">
+                            <div class="product-text-overlay">
+                                <h3 class="product-name">Smartphone Stand</h3>
+                                <p class="product-description">Adjustable phone stand for comfortable viewing. Compatible with all smartphones.</p>
+                                <div class="product-meta">
+                                    <span class="seller">By TechEssentials</span>
+                                    <span class="price">$24.99</span>
+                                </div>
+                            </div>
+                            <div class="product-image">
+                                <img src="images/junko-nakase-Q-72wa9-7Dg-unsplash.jpg"
+                                     alt="Smartphone Stand"
+                                     loading="lazy">
+                                <div class="product-actions">
+                                    <button type="button" class="action-button like-button" aria-label="Like">
+                                        <i class="far fa-heart" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" class="action-button save-button" aria-label="Save">
+                                        <i class="far fa-bookmark" aria-hidden="true"></i>
+                                    </button>
                                 </div>
                             </div>
                         </article>
                     </section>
                 </main>
 
+                <!--
+                  Flutter Equivalent:
+                  class BottomNavBar extends StatelessWidget {
+                    final int currentIndex;
+                    final Function(int) onTap;
+
+                    const BottomNavBar({
+                      Key? key,
+                      required this.currentIndex,
+                      required this.onTap,
+                    }) : super(key: key);
+
+                    @override
+                    Widget build(BuildContext context) {
+                      return Container(
+                        // Styling to match the glass effect
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.8),
+                          borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+                          // Add blur and other effects
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              _buildNavItem(0, Icons.home_outlined, 'Home'),
+                              _buildNavItem(1, Icons.explore_outlined, 'Explore'),
+                              _buildNavItem(2, Icons.person_outline, 'Profile'),
+                              // Floating action button for search
+                              Transform.translate(
+                                offset: Offset(0, -20),
+                                child: FloatingActionButton(
+                                  onPressed: () {},
+                                  child: Icon(Icons.search),
+                                  // Customize FAB style
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    }
+
+                    Widget _buildNavItem(int index, IconData icon, String label) {
+                      final isSelected = currentIndex == index;
+                      return GestureDetector(
+                        onTap: () => onTap(index),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              icon,
+                              color: isSelected ? Colors.purple : Colors.grey,
+                            ),
+                            Text(
+                              label,
+                              style: TextStyle(
+                                color: isSelected ? Colors.purple : Colors.grey,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+                  }
+                -->
                 <!-- Bottom Navigation -->
                 <div class="nav-wrapper">
                     <div class="bottom-nav-container">
@@ -100,18 +321,17 @@
                             <span>Profile</span>
                         </a>
                     </div>
-                    
-                    <!-- Search Button -->
+
+                    <!-- Search Button - In Flutter, use FloatingActionButton -->
                     <a href="#" class="search-button" aria-label="Search">
                         <i class="fas fa-search"></i>
                     </a>
                 </div>
             </div>
-        </div>
     </div>
 
     <!-- JavaScript -->
-    <script src="js/script.js"></script>
-    <script src="js/scroll-handler.js"></script>
+    <script src="js/scroll-handler.js" type="module"></script>
+    <script src="js/script.js" type="module" defer></script>
 </body>
 </html>
