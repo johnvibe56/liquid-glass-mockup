@@ -1,0 +1,1289 @@
+/* Base & Variables */
+:root {
+    /* Updated color palette */
+    --primary-color: rgba(10, 132, 255, 0.85);
+    --primary-light: rgba(64, 200, 224, 0.8);
+    --secondary-color: rgba(94, 92, 230, 0.8);
+    --text-primary: rgba(255, 255, 255, 0.92);
+    --text-secondary: rgba(255, 255, 255, 0.72);
+    --text-tertiary: rgba(255, 255, 255, 0.5);
+    
+    /* Glass layers */
+    --glass-bg-thin: rgba(255, 255, 255, 0.08);
+    --glass-bg: rgba(255, 255, 255, 0.12);
+    --glass-bg-thick: rgba(255, 255, 255, 0.16);
+    --glass-border: rgba(255, 255, 255, 0.16);
+    --glass-border-light: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.18);
+    --glass-shadow-hover: 0 12px 40px 0 rgba(0, 0, 0, 0.22);
+    
+    /* Depth system */
+    --elevation-1: 0 1px 2px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.05), 0 2px 8px rgba(0, 0, 0, 0.05);
+    --elevation-2: 0 2px 4px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.08), 0 8px 16px rgba(0, 0, 0, 0.08);
+    --elevation-3: 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1), 0 16px 32px rgba(0, 0, 0, 0.1);
+    
+    /* Animation */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* iPhone Frame */
+body {
+    margin: 0;
+    padding: 20px;
+    background: #f2f2f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: auto;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.iphone-frame {
+    width: 375px;
+    height: 812px;
+    background: #000;
+    border-radius: 50px;
+    padding: 15px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    box-sizing: border-box;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.screen {
+    flex: 1;
+    background: #fff;
+    border-radius: 40px;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+}
+
+.main-content {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding-top: 20px; /* Add some space between header and content */
+}
+
+.notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 35px;
+    background: #000;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+    z-index: 1001; /* Ensure notch is above header */
+}
+
+.app-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    border-radius: 40px;
+    background: #fff;
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--text-primary);
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    background: radial-gradient(ellipse at 20% 20%, #1a1a2e 0%, #0f0f1a 100%);
+    color: var(--text-primary);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Background */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: radial-gradient(ellipse at 20% 20%, #1a1a2e 0%, #0f0f1a 100%);
+    overflow: hidden;
+}
+
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        /* Subtle noise texture */
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E"),
+        /* Radial gradients for depth */
+        radial-gradient(circle at 20% 30%, rgba(0, 122, 255, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(10, 132, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(94, 92, 230, 0.08) 0%, transparent 70%);
+    z-index: -1;
+    pointer-events: none;
+    
+    /* Subtle animation */
+    animation: gradientShift 20s ease infinite;
+    background-size: 200% 200%, 200% 200%, 200% 200%, 200% 200%;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
+    50% { background-position: 100% 100%, 100% 100%, 100% 100%, 100% 100%; }
+    100% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
+}
+
+/* Main Content */
+/* Page Header */
+.page-header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 45px 20px 15px; /* Increased top padding to account for notch */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border-radius: 0 0 20px 20px;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Collapsed state */
+.page-header.scrolled {
+    padding: 10px 20px 8px;
+    background: rgba(245, 247, 250, 0.6);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.page-header.scrolled .page-title {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    color: black;   
+}
+
+/* New Post Button */
+.new-post-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    color: black;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    margin: 0;
+}
+
+.new-post-button i {
+    font-size: 14px;
+    display: block;
+}
+
+.new-post-button span {
+    display: none; /* Hide text by default */
+}
+
+.new-post-button:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.new-post-button:active {
+    transform: scale(0.98);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Show text on larger screens if needed */
+@media (min-width: 768px) {
+    .new-post-button {
+        width: auto;
+        padding: 0 16px;
+        border-radius: 20px;
+    }
+    
+    .new-post-button span {
+        display: inline;
+        margin-left: 6px;
+        font-size: 13px;
+        font-weight: 500;
+    }
+}
+
+.product-feed {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: y mandatory;
+    padding: 15px;
+    padding-bottom: 80px; /* Space for nav */
+    box-sizing: border-box;
+    margin: 0;
+    width: 100%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-height: 0; /* Crucial for flex children to respect overflow */
+}
+
+.product-feed::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari and Opera */
+}
+
+/* Product Card */
+.product-card {
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 240px);
+    max-height: 90vh;
+    margin: 0;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: transparent;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    flex-shrink: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.product-card:last-child {
+    margin-bottom: 0;
+}
+
+.product-image {
+    width: 100%;
+    flex: 0 0 70%;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.product-info {
+    flex: 0 0 auto;
+    padding: 8px 18px 12px;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 60, 100, 0.15) 0%,
+        rgba(0, 95, 120, 0.25) 100%
+    ) !important;
+    backdrop-filter: blur(20px) saturate(180%) brightness(1.1) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) brightness(1.1) !important;
+    color: white;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 -8px 32px rgba(0, 60, 100, 0.3);
+    min-height: auto;
+    max-height: none;
+    width: 100%;
+    word-wrap: break-word;
+    margin-top: auto;
+    
+    /* Glass effect overlay */
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0.1) 50%,
+            rgba(255, 255, 255, 0.05) 100%
+        );
+        z-index: -1;
+        pointer-events: none;
+    }
+}
+
+.product-text {
+    position: relative;
+    z-index: 3;
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    overflow: visible;
+    flex: 0 1 auto;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.product-name {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    padding: 0;
+    color: white;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    width: 100%;
+    line-height: 1.3;
+    display: block;
+    max-width: 100%;
+    word-break: break-word;
+    letter-spacing: 0.01em;
+}
+
+.product-description {
+    font-size: 0.9em;
+    line-height: 1.4;
+    margin: 0 0 6px 0;
+    color: rgba(255, 255, 255, 0.95);
+    display: block;
+    overflow: visible;
+    text-overflow: clip;
+    width: 100%;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+    font-weight: 400;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.product-price {
+    font-weight: 600;
+    color: white;
+    font-size: 0.85em;
+    margin: 2px 0 0 0;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    width: auto;
+    max-width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Gradient overlay for better text readability */
+.product-info::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, 
+        rgba(0,0,0,0.3) 0%, 
+        rgba(0,0,0,0.7) 100%);
+    z-index: 1;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+}
+
+/* Add subtle overlay for better text contrast */
+.product-info::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2) 0%,
+        rgba(0, 0, 0, 0.3) 100%
+    );
+    z-index: 2;
+    pointer-events: none;
+}
+
+.product-text {
+    position: relative;
+    z-index: 3;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+    width: 100%;
+    padding: 25px;
+    /* Removed the inner glass pane styles */
+}
+
+/* Add subtle animation to the glass effect */
+@keyframes glassPulse {
+    0% { opacity: 0.7; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.7; }
+}
+
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.product-name {
+font-size: 1.8rem;
+margin: 0 0 10px;
+font-weight: 700;
+}
+
+.product-description {
+font-size: 1.1rem;
+margin: 0 0 15px;
+line-height: 1.4;
+}
+
+.product-price {
+display: inline-block;
+background: rgba(255, 255, 255, 0.2);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+padding: 8px 16px;
+border-radius: 20px;
+font-weight: 600;
+font-size: 1.2rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 8rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Glass Card */
+.card {
+    background: linear-gradient(135deg, var(--glass-bg), var(--glass-bg-thin));
+    border-radius: 22px;
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    box-shadow: var(--elevation-2), 0 0 0 1px rgba(255, 255, 255, 0.03);
+    overflow: hidden;
+    transition: var(--transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transform: translateZ(0);
+    will-change: transform, box-shadow;
+    
+    /* Subtle edge highlight */
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 22px;
+        padding: 1px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.03));
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+    }
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(31, 38, 135, 0.25);
+}
+
+.card-image {
+    width: 100%;
+    height: 160px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    opacity: 0.7;
+    border-radius: 28px 28px 0 0;
+}
+
+.card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Feed Grid */
+.feed-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+/* Profile Section */
+.profile-section {
+    text-align: center;
+    margin: 2rem 0 4rem;
+    position: relative;
+}
+
+.profile-avatar {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    border: 2px solid var(--glass-border);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    overflow: hidden;
+}
+
+.edit-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.edit-button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.1);
+}
+
+.profile-name {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(45deg, var(--text-primary), var(--text-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.profile-handle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Navigation Wrapper */
+.nav-wrapper {
+  position: fixed;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 24px;
+  z-index: 1000;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  max-width: 100%;
+  overflow: hidden;
+  gap: 12px;
+  /* Ensure the container takes full width but centers its children */
+  margin: 0 auto;
+  max-width: 375px; /* Match iPhone frame width */
+}
+
+/* Bottom Navigation Container */
+.bottom-nav-container {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  padding: 6px;
+  gap: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  max-width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  width: auto;
+  margin: 0 auto;
+}
+
+/* When scrolled, remove background and border */
+.bottom-nav-container {
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.4, 1);
+  will-change: transform, opacity, background, box-shadow;
+  transform-origin: bottom;
+}
+
+.bottom-nav-container.collapsed {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  gap: 12px;
+  width: 100%;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  opacity: 0.9;
+  transform: translateY(10px);
+}
+
+.bottom-nav-container:not(.collapsed) {
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.4, 1.1);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ensure no background bleeds through from parent */
+.nav-wrapper.scrolled .bottom-nav-container {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.4, 1);
+}
+
+/* Navigation Item */
+.nav-item {
+  min-width: 70px;
+  height: 44px;
+  padding: 0 16px;
+  color: rgba(0, 0, 0, 0.6);
+  text-decoration: none;
+  font-size: 0.7rem;
+  font-weight: 500;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  will-change: transform, opacity, width;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  opacity: 1;
+  width: auto;
+  min-width: 44px;
+}
+
+.nav-item i {
+  font-size: 1.25rem;
+  margin-bottom: 2px;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.nav-item span {
+  font-size: 0.7rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+/* Active Nav Item */
+.nav-item.active {
+  color: #b057f8;
+  font-weight: 600;
+  position: relative;
+  overflow: visible;
+}
+
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -10px;
+  right: -10px;
+  bottom: -6px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 999px;
+  z-index: 1;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.nav-item.active i,
+.nav-item.active span {
+  color: #b057f8;
+  position: relative;
+  z-index: 2;
+}
+
+/* Hover State */
+.nav-item:not(.active):hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Focus State */
+.nav-item:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Collapsed states */
+.nav-wrapper.scrolled {
+  justify-content: flex-start;
+  padding: 0 24px;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 0;
+  position: relative;
+}
+
+/* Adjust search button position when scrolled */
+.nav-wrapper.scrolled .search-button {
+  margin-left: 12px;
+  flex-shrink: 0;
+}
+
+/* Ensure nav items don't overflow */
+.nav-item {
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+/* Active nav item styles */
+.nav-item.active {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hide non-active items when scrolled */
+.nav-wrapper.scrolled .nav-item:not(.active) {
+  opacity: 0 !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  pointer-events: none !important;
+  transform: translateX(-20px) !important;
+}
+
+/* Search button base styles */
+.search-button {
+  /* Reset all properties */
+  all: initial;
+  /* Re-apply necessary properties */
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: white !important;
+  text-decoration: none !important;
+  z-index: 2;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.4, 1) !important;
+  will-change: transform, opacity, background;
+}
+
+/* Default state - visible in nav bar */
+.nav-wrapper:not(.scrolled) .search-button {
+  margin-left: 12px;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+  position: static !important;
+}
+
+/* Collapsed state - minimal icon only */
+.nav-wrapper.scrolled .search-button {
+  /* Reset all styles */
+  all: revert;
+  /* Re-apply only what we need */
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  position: absolute !important;
+  right: 24px !important;
+  width: 44px !important;
+  height: 44px !important;
+  color: white !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  z-index: 2 !important;
+  transform: translateX(0) !important;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.4, 1) !important;
+}
+
+/* Ensure the icon is properly sized */
+.search-button i {
+  font-size: 20px;
+  color: inherit !important;
+}
+
+/* Ensure the bottom nav container doesn't affect search button position */
+.bottom-nav-container {
+  position: relative;
+  z-index: 1;
+}
+
+.bottom-nav-container.collapsed {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.nav-item:not(.active) {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-wrapper.scrolled .bottom-nav-container .nav-item:not(.active) {
+  width: 0;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-20px);
+}
+
+.nav-wrapper.scrolled .search-button {
+  transform: translateX(0) !important;
+  margin-left: auto;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.4, 1) !important;
+}
+
+/* Search Button */
+.search-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  min-height: 56px;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  background: none;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.search-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  z-index: -1;
+  transition: all 0.3s cubic-bezier(0.2, 0, 0.1, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.search-button i {
+  font-size: 1.25rem;
+  color: #ffffff; /* White color */
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.search-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.3s cubic-bezier(0.2, 0, 0.1, 1);
+  z-index: 1;
+  box-shadow: 0 4px 12px rgba(176, 87, 248, 0.15);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Active/Selected State */
+.search-button.active,
+.search-button:active {
+  background: transparent;
+}
+
+.search-button.active::before,
+.search-button:active::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.search-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.search-button:hover i {
+  transform: scale(1.1);
+  opacity: 0.9;
+  color: #ffffff; /* Ensure white on hover */
+}
+
+.search-button:active {
+  transform: translateY(0);
+}
+
+.search-button:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.2);
+  outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .nav-wrapper {
+    width: calc(100% - 32px);
+    justify-content: space-between;
+  }
+  
+  .bottom-nav-container {
+    width: 100%;
+    justify-content: space-around;
+  }
+  
+  .search-button {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.search-button:hover,
+.search-button:focus {
+  transform: scale(1.08);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+  .bottom-nav-container {
+    width: calc(100% - 32px);
+    justify-content: space-between;
+  }
+  
+  .bottom-nav {
+    width: 100%;
+    justify-content: space-around;
+  }
+  
+  .nav-item {
+    min-width: auto;
+    padding: 8px 16px;
+    flex: 1;
+  }
+  
+  .nav-item span {
+    font-size: 0.7rem;
+  }
+  
+  .search-button-container {
+    position: absolute;
+    right: 16px;
+    bottom: 8px;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .bottom-nav-container {
+        width: calc(100% - 2rem);
+        justify-content: space-between;
+    }
+    
+    .bottom-nav {
+        flex: 1;
+        justify-content: space-around;
+        min-width: auto;
+        height: 60px;
+    }
+    
+    .search-button-container {
+        margin-left: 0.5rem;
+    }
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    border-radius: 14px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    font-size: 0.7rem;
+    font-weight: 500;
+    min-width: 60px;
+    height: 56px;
+    
+    /* Icon container */
+    .icon-container {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 4px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    i {
+        font-size: 1.1rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Hover effect */
+    &:hover {
+        color: rgba(255, 255, 255, 0.9);
+        
+        .icon-container {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    }
+}
+
+.nav-item i {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.nav-item span {
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.nav-item.active {
+    color: white;
+    
+    .icon-container {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 0 0 0.5px rgba(255, 255, 255, 0.1);
+    }
+    
+    i {
+        font-size: 1.2rem;
+    }
+    
+    span {
+        font-weight: 600;
+        letter-spacing: 0.01em;
+    }
+}
+
+/* Remove default hover for non-active items */
+.nav-item:not(.active):hover {
+    color: rgba(255, 255, 255, 0.9);
+    background: transparent;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .feed-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+    
+    .profile-name {
+        font-size: 1.75rem;
+    }
+    
+    .profile-handle {
+        font-size: 1rem;
+    }
+    
+    .nav-item {
+        padding: 0.5rem 1rem;
+    }
+    
+    .nav-item span {
+        font-size: 0.65rem;
+    }
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateZ(0);
+    }
+    50% {
+        transform: translateY(-8px) translateZ(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 6px 20px rgba(10, 132, 255, 0.3), 
+                    0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+                    0 0 0 0 rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 6px 20px rgba(10, 132, 255, 0.3), 
+                    0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+                    0 0 0 10px rgba(255, 255, 255, 0);
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Add subtle animation to cards */
+.card:nth-child(1) { animation: float 6s ease-in-out infinite; }
+.card:nth-child(2) { animation: float 7s ease-in-out infinite 1s; }
+.card:nth-child(3) { animation: float 8s ease-in-out infinite 1.5s; }
+.card:nth-child(4) { animation: float 9s ease-in-out infinite 2s; }
