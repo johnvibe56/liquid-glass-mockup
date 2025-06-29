@@ -26,7 +26,6 @@ html, body {
   position: relative;
   overflow-x: hidden; /* Prevent horizontal scroll */
   min-height: 100vh;
-  padding-top: 60px; /* Space for fixed header */
   padding-bottom: var(--nav-height, 60px); /* Space for fixed nav */
   box-sizing: border-box;
   /* Remove background to fix stacking context */
@@ -48,7 +47,6 @@ html, body {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   visibility: hidden;
-  padding-top: 60px; /* Space for header */
   padding-bottom: var(--nav-height, 60px); /* Space for bottom nav */
   /* Ensure scrolling works on iOS */
   -webkit-overflow-scrolling: touch;
@@ -89,7 +87,7 @@ html, body {
 /* Main content area */
 .main-content {
   flex: 1;
-  padding: 1rem;
+  padding: 0 1rem 1rem 1rem;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;

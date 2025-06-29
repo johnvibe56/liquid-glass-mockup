@@ -1,0 +1,19 @@
+/* Main CSS file - Import all styles */
+
+/* Base styles */
+@import 'base/reset.css';
+@import 'base/typography.css';
+
+/* Components */
+@import 'components/layout/container.css';
+@import 'components/layout/grid.css';
+@import 'components/ui/buttons.css';
+@import 'components/ui/cards.css';
+@import 'components/navigation/navbar.css';
+
+/* Pages */
+@import 'pages/feed.css';
+@import 'pages/discover.css';
+
+/* Utilities */
+@import 'utilities/utilities.css';

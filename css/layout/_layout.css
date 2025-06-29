@@ -94,8 +94,6 @@
 /* Main content area */
 .main-content {
   flex: 1;
-  padding-top: 60px; /* Space for header */
-  /* Space for bottom nav is now handled by individual components */
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   position: relative;
@@ -257,7 +255,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Side Action Buttons */
+/* Side Action Buttons - Only for floating action buttons */
 .product-actions {
   position: absolute;
   right: 16px;
@@ -266,70 +264,15 @@
   flex-direction: column;
   gap: 16px;
   z-index: 10;
-  background: rgba(255, 255, 255, 0.15);
-  padding: 8px;
-  border-radius: 24px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.action-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  border-radius: 50%;
   padding: 0;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  margin: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+  pointer-events: none;
 }
 
-.action-button:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: scale(1.1);
-}
-
-.action-button:active {
-  transform: scale(0.95);
-}
-
-.action-button i {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--action-button-size);
-  height: var(--action-button-size);
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 50%;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: var(--action-icon-size);
-  margin-bottom: 4px;
-  transition: all 0.2s ease;
-}
-
-.action-button span {
-  font-size: 0.7rem;
-  font-weight: 500;
-  margin-top: 2px;
-}
-
-.action-button.like-button.liked i {
-  color: #ff2d55;
-}
-
-.action-button.save-button.saved i {
-  color: #1da1f2;
-}
+/* Action button styles have been removed */
 
 /* Ensure the iPhone frame creates a stacking context */
 .iphone-frame {
