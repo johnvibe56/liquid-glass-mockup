@@ -1,0 +1,350 @@
+/* LAYOUT STYLES */
+
+:root {
+  --spacing-lg: 20px;
+  --spacing-md: 16px;
+  --spacing-sm: 12px;
+  --border-radius-lg: 24px;
+  --border-radius-md: 16px;
+  --border-radius-sm: 8px;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-bg-thin: rgba(255, 255, 255, 0.5);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --transition-normal: 0.3s ease;
+  --z-nav: 1000;
+  --z-header: 900;
+}
+
+/* Main content area */
+.main-content {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.main-content::-webkit-scrollbar {
+  display: none;
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.product-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scroll-padding-top: 60px; /* Account for header */
+  -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+  scrollbar-width: none;  /* Hide scrollbar for Firefox */
+}
+
+.product-feed::-webkit-scrollbar {
+  display: none;
+}
+
+/* Main container for the app */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure product cards take full height without extra space */
+.product-card {
+  height: calc(100vh - 60px) !important; /* Subtract header height */
+  min-height: calc(100vh - 60px) !important;
+  margin: 0 !important;
+  padding: 0 0 80px 0 !important; /* Add bottom padding to prevent content from being hidden */
+  box-sizing: border-box;
+  position: relative;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Header styles are now in _header.css */
+
+/* Main content area */
+.main-content {
+  flex: 1;
+  padding-top: 60px; /* Space for header */
+  /* Space for bottom nav is now handled by individual components */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  height: calc(100vh - 60px); /* Full viewport height minus header */
+}
+
+/* Product card */
+.product-card {
+  --card-radius: 12px;
+  --transition-speed: 0.3s;
+  --action-button-size: 48px;
+  --action-icon-size: 24px;
+  --action-spacing: 16px;
+  --text-padding: 16px;
+  
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: calc(100vh - 60px); /* Subtract header height */
+  min-height: calc(100vh - 60px); /* Ensure minimum height */
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Remove hover effects for a more app-like feel */
+.product-card:hover {
+  transform: none;
+}
+
+/* Video/Image Container */
+.product-card {
+  position: relative;
+  width: 100%;
+  background: transparent;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.product-image {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%; /* 1:1 aspect ratio */
+  overflow: hidden;
+  z-index: 1;
+  background: transparent;
+}
+
+.product-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  z-index: 1;
+}
+
+/* Text Overlay - Gradient Background */
+.product-text-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 33.33%;
+  min-height: 120px; /* Ensure enough space for content */
+  z-index: 2;
+  padding: 20px 16px 30px; /* Extra bottom padding for navigation */
+  color: #fff;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.7) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  width: 100%;
+  /* Ensure no glass effects */
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform: translateY(1px); /* Fix for subpixel rendering */
+  pointer-events: none; /* Allow clicks to pass through to the image */
+}
+
+.product-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-description {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin: 0 0 0.75rem;
+  opacity: 0.9;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.seller {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.seller-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  object-fit: cover;
+}
+
+.price {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Side Action Buttons */
+.product-actions {
+  position: absolute;
+  right: 16px;
+  bottom: 25%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8px;
+  border-radius: 24px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.action-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.action-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.action-button:active {
+  transform: scale(0.95);
+}
+
+.action-button i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--action-button-size);
+  height: var(--action-button-size);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: var(--action-icon-size);
+  margin-bottom: 4px;
+  transition: all 0.2s ease;
+}
+
+.action-button span {
+  font-size: 0.7rem;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.action-button.like-button.liked i {
+  color: #ff2d55;
+}
+
+.action-button.save-button.saved i {
+  color: #1da1f2;
+}
+
+/* Ensure the iPhone frame creates a stacking context */
+.iphone-frame {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Ensure the screen area is scrollable */
+.screen {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+

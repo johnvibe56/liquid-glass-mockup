@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Backdrop Filter Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: url('https://picsum.photos/2000/1000') center/cover no-repeat;
+        }
+        .test-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #000;
+            z-index: 1000;
+        }
+        .content {
+            margin-top: 60px;
+            padding: 20px;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-header">
+        Backdrop Filter Test - This should be glassy
+    </div>
+    <div class="content">
+        <h1>Scroll down to see the effect</h1>
+        <div style="height: 200vh;">
+            <p>Scroll to see if the header shows the glass effect</p>
+        </div>
+    </div>
+</body>
+</html>

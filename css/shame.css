@@ -1,0 +1,135 @@
+/*
+ * SHAME.CSS
+ *
+ * Temporary styles and quick fixes that need to be refactored later.
+ * Organized by component/feature for easy reference.
+ */
+
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+
+/* Nav wrapper styles moved to _navigation.css */
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+/* Header styles moved to _header.css for consistency */
+/* Using !important to ensure our glass effect takes precedence */
+.page-header {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* ==========================================================================
+   Cards
+   ========================================================================== */
+
+/* FIXME: Temporary fix for card hover states */
+.product-card:hover {
+  transform: translateY(-4px) !important; /* Ensure consistent hover effect */
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+/* FIXME: Temporary fix for button focus states */
+button:focus {
+  outline: 2px solid var(--primary-color) !important;
+  outline-offset: 2px !important;
+}
+
+/* ==========================================================================
+   Responsive Overrides
+   ========================================================================== */
+
+/* FIXME: Temporary mobile menu styles */
+@media (max-width: 768px) {
+  .mobile-menu {
+    display: block !important; /* Force show mobile menu */
+  }
+  
+  .desktop-menu {
+    display: none !important; /* Hide desktop menu */
+  }
+}
+
+/* ==========================================================================
+   Third-party Overrides
+   ========================================================================== */
+
+/* FIXME: Temporary override for third-party component */
+.third-party-component {
+  max-width: 100% !important; /* Prevent horizontal overflow */
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+
+@media print {
+  /* FIXME: Temporary print styles */
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   Browser Hacks
+   ========================================================================== */
+
+/* FIXME: Safari specific fixes */
+_::-webkit-full-page-media, _:future, :root .safari-only {
+  /* Safari specific CSS */
+}
+
+/* FIXME: Firefox specific fixes */
+@-moz-document url-prefix() {
+  /* Firefox specific CSS */
+}
+
+/* FIXME: Edge specific fixes */
+@supports (-ms-ime-align:auto) {
+  /* Edge specific CSS */
+}
+
+/* FIXME: IE 11 specific fixes */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /* IE 11 specific CSS */
+}
+
+/* ==========================================================================
+   Temporary Debugging
+   ========================================================================== */
+
+/* FIXME: Temporary debugging styles - REMOVE BEFORE PRODUCTION */
+/*
+* {
+  outline: 1px solid rgba(255, 0, 0, 0.1) !important;
+}
+*/
+
+/* ==========================================================================
+   Temporary Overrides
+   ========================================================================== */
+
+/* FIXME: Temporary override - needs proper theming solution */
+:root {
+  --temporary-fix: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   Temporary Animations
+   ========================================================================== */
+
+/* FIXME: Temporary animation for loading states */
+@keyframes temporaryPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.temporary-pulse {
+  animation: temporaryPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

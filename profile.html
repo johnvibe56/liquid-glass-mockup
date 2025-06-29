@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Profile - RIVO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pages/_profile.css">
+    </head>
+<body>
+    <div class="app-viewport">
+        <div class="app-container">
+            <div class="background">
+                <div class="gradient-overlay"></div>
+            </div>
+            
+            <div class="page active">
+                <!-- Top Bar - Glass Effect -->
+                <div class="top-bar">
+                    <h1 class="page-title">Profile</h1>
+                    <button type="button" class="btn-icon" aria-label="Settings">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+                
+                <main class="main-content profile-page">
+                    <!-- Profile Header with Full-width Cover -->
+                    <div class="profile-cover">
+                        <div class="cover-image" style="background-image: url('https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
+                        <div class="profile-avatar-container">
+                            <div class="profile-avatar">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Alex Johnson">
+                                <button class="btn-avatar-edit" aria-label="Edit profile picture">
+                                    <i class="fas fa-camera"></i>
+                                </button>
+                            </div>
+                            <button class="btn-edit">
+                                <i class="fas fa-pen"></i> Edit Profile
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Profile Info -->
+                    <section class="profile-info-section">
+                        <div class="profile-header">
+                            <h1>Alex Johnson</h1>
+                            <p class="profile-handle">@alexjohnson</p>
+                            
+                            <style>
+                                .profile-bio,
+                                .stat-label,
+                                .stat-number {
+                                    color: #1a1a1a !important;
+                                    -webkit-text-fill-color: #1a1a1a !important;
+                                    opacity: 1 !important;
+                                }
+                                .stat-label {
+                                    font-size: 0.875rem !important;
+                                    font-weight: 500 !important;
+                                }
+                            </style>
+                            <p class="profile-bio">Fashion enthusiast | Streetwear lover | Minimalist at heart. Sharing my style journey and favorite finds from around the world. ✨ #OOTD</p>
+                            
+                            <div class="profile-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>San Francisco, CA</span>
+                            </div>
+                            
+                            <div class="profile-stats">
+                                <div class="stat">
+                                    <span class="stat-number">128</span>
+                                    <span class="stat-label">Posts</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">1.2k</span>
+                                    <span class="stat-label">Followers</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">456</span>
+                                    <span class="stat-label">Following</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="style-highlight">
+                            <h3>My Style</h3>
+                            <div class="style-tags">
+                                <span class="style-tag">#Vintage</span>
+                                <span class="style-tag">#Minimalist</span>
+                                <span class="style-tag">#Streetwear</span>
+                                <span class="style-tag">#90sVibes</span>
+                                <span class="style-tag">#Sneakerhead</span>
+                            </div>
+                        </div>
+                    
+
+                    <!-- Instagram Style Tabs -->
+                    <div class="ig-tabs">
+                        <div class="ig-tabs-container">
+                            <button class="ig-tab active" data-tab="posts">
+                                <i class="fas fa-th-large"></i>
+                                <span>POSTS</span>
+                                <div class="ig-tab-indicator"></div>
+                            </button>
+                            <button class="ig-tab" data-tab="saved">
+                                <i class="far fa-bookmark"></i>
+                                <span>SAVED</span>
+                                <div class="ig-tab-indicator"></div>
+                            </button>
+                        </div>
+                        
+                        <!-- Posts Tab -->
+                        <div class="tab-content active" id="posts-tab">
+                            <div class="pinterest-grid">
+                                <!-- Post items will be dynamically loaded here -->
+                                <div class="pinterest-item">
+                                    <div class="pinterest-image-container">
+                                        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Post" loading="lazy">
+                                        <div class="pinterest-overlay">
+                                            <div class="pinterest-stats">
+                                                <span><i class="fas fa-heart"></i> 124</span>
+                                                <span><i class="fas fa-comment"></i> 23</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- More post items with different aspect ratios -->
+                                <div class="pinterest-item">
+                                    <div class="pinterest-image-container">
+                                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Post" loading="lazy">
+                                        <div class="pinterest-overlay">
+                                            <div class="pinterest-stats">
+                                                <span><i class="fas fa-heart"></i> 89</span>
+                                                <span><i class="fas fa-comment"></i> 12</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pinterest-item">
+                                    <div class="pinterest-image-container">
+                                        <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Post" loading="lazy">
+                                        <div class="pinterest-overlay">
+                                            <div class="pinterest-stats">
+                                                <span><i class="fas fa-heart"></i> 156</span>
+                                                <span><i class="fas fa-comment"></i> 34</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pinterest-item">
+                                    <div class="pinterest-image-container">
+                                        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Post" loading="lazy">
+                                        <div class="pinterest-overlay">
+                                            <div class="pinterest-stats">
+                                                <span><i class="fas fa-heart"></i> 201</span>
+                                                <span><i class="fas fa-comment"></i> 42</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Saved Tab -->
+                        <div class="tab-content" id="saved-tab">
+                            <div class="pinterest-grid">
+                                <!-- Saved Collection 1 -->
+                                <div class="pinterest-item">
+                                    <div class="pinterest-image-container">
+                                        <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Saved collection" loading="lazy">
+                                        <div class="pinterest-overlay">
+                                            <div class="pinterest-collection">
+                                                <span class="collection-count">12 items</span>
+                                                <h5>Work Wear</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- More saved items -->
+                                <div class="pinterest-item">
+                                    <div class="pinterest-image-container">
+                                        <img src="https://images.unsplash.com/photo 1520367445093-50dc08a59d9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Saved item" loading="lazy">
+                                        <div class="pinterest-overlay">
+                                            <div class="pinterest-actions">
+                                                <button class="btn-icon" aria-label="Like">
+                                                    <i class="fas fa-heart"></i>
+                                                </button>
+                                                <button class="btn-icon" aria-label="Save">
+                                                    <i class="fas fa-bookmark"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pinterest-item">
+                                    <div class="pinterest-image-container">
+                                        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Saved item" loading="lazy">
+                                        <div class="pinterest-overlay">
+                                            <div class="pinterest-actions">
+                                                <button class="btn-icon" aria-label="Like">
+                                                    <i class="fas fa-heart"></i>
+                                                </button>
+                                                <button class="btn-icon" aria-label="Save">
+                                                    <i class="fas fa-bookmark"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                
+                <!-- RIVO Bottom Navigation -->
+                <nav class="nav-wrapper" aria-label="Main navigation">
+                    <div class="bottom-nav-container">
+                        <a href="index.html" class="nav-item" aria-label="Home">
+                            <i class="fas fa-home" aria-hidden="true"></i>
+                            <span>Home</span>
+                        </a>
+                        <a href="discover.html" class="nav-item" aria-label="Discover">
+                            <i class="fas fa-compass" aria-hidden="true"></i>
+                            <span>Discover</span>
+                        </a>
+                        <a href="profile.html" class="nav-item" aria-label="Profile" aria-current="page">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                            <span>Profile</span>
+                        </a>
+                    </div>
+                </nav>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script type="module">
+        // Import and initialize the application
+        import { initApp } from './js/core/app.js';
+        import { initProfilePage } from './js/features/pages/profile.js';
+        
+        // Initialize the app
+        initApp();
+        
+        // Initialize profile page specific functionality
+        document.addEventListener('DOMContentLoaded', initProfilePage);
+    </script>
+</body>
+</html>

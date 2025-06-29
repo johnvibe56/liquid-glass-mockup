@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Discover - RIVO</title>
+    <meta name="description" content="Discover the latest trends and curated picks on RIVO">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pages/_discover.css">
+</head>
+<body>
+    <div class="app-viewport">
+        <div class="app-container">
+            <div class="background">
+                <div class="gradient-overlay"></div>
+            </div>
+            
+            <div class="page active" id="discover-page">
+                <!-- Top Bar - Glass Effect -->
+                <div class="top-bar">
+                    <h1 class="page-title">Discover</h1>
+                    <button class="search-icon" id="searchBox" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <main class="main-content">
+                    <!-- Featured Pick of the Day -->
+                    <section class="featured-pick" id="featured-pick">
+                        <div class="featured-pick__image-container">
+                            <img 
+                                src="https://images.unsplash.com/photo-1556906781-2dc4d6f5d8f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                                alt="Stylish leather jacket with fur collar" 
+                                class="featured-pick__image"
+                                loading="eager"
+                                width="1200"
+                                height="675"
+                                onload="this.style.opacity = 1;"
+                                onerror="this.src='https://images.unsplash.com/photo-1551232864-3f0890e580d9?auto=format&fit=crop&w=1200&q=80'; this.onerror=null;"
+                            >
+                        </div>
+                        <div class="featured-pick__overlay">
+                            <span class="featured-pick__badge">Pick of the Day</span>
+                            <h2 class="featured-pick__title">Vintage Leather Jacket</h2>
+                            <p class="featured-pick__description">Handcrafted genuine leather with a timeless design</p>
+                            <button class="featured-pick__cta">
+                                Explore Today's Pick
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </section>
+
+                    <!-- Trending Tags -->
+                    <section class="trending-tags">
+                        <h2>Trending Now</h2>
+                        <div class="tags-container">
+                            <span class="tag active" data-tag="all">All</span>
+                            <span class="tag" data-tag="vintage">#Vintage</span>
+                            <span class="tag" data-tag="streetwear">#Streetwear</span>
+                            <span class="tag" data-tag="minimalist">#Minimalist</span>
+                            <span class="tag" data-tag="luxury">#Luxury</span>
+                            <span class="tag" data-tag="accessories">#Accessories</span>
+                            <span class="tag" data-tag="sneakers">#Sneakers</span>
+                            <span class="tag" data-tag="denim">#Denim</span>
+                        </div>
+                    </section>
+                    
+                    <!-- Curated Collections -->
+                    <section class="curated-collections">
+                        <h2>Curated For You</h2>
+                        <div class="collections-grid">
+                            <!-- Modern Streetwear -->
+                            <div class="collection-card">
+                                <img 
+                                    src="https://images.unsplash.com/photo-1617137968427-85924c800a22?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                                    srcset="https://images.unsplash.com/photo-1617137968427-85924c800a22?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80 1x, https://images.unsplash.com/photo-1617137968427-85924c800a22?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80 2x"
+                                    alt="Modern streetwear fashion with oversized denim and statement sneakers" 
+                                    class="collection-card__image"
+                                    loading="lazy"
+                                    width="600"
+                                    height="900"
+                                >
+                                <div class="collection-card__overlay">
+                                    <h3 class="collection-card__title">Urban Streetwear</h3>
+                                    <div class="collection-card__meta">
+                                        <i class="fas fa-tshirt"></i>
+                                        <span>24 items</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Vintage Collection -->
+                            <div class="collection-card">
+                                <img 
+                                    src="https://images.unsplash.com/photo-1520367445093-50dc08a59d9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                                    srcset="https://images.unsplash.com/photo-1520367445093-50dc08a59d9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80 1x, https://images.unsplash.com/photo-1520367445093-50dc08a59d9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80 2x"
+                                    alt="Vintage leather jacket and denim collection" 
+                                    class="collection-card__image"
+                                    loading="lazy"
+                                    width="600"
+                                    height="750"
+                                >
+                                <div class="collection-card__overlay">
+                                    <h3 class="collection-card__title">Retro Revival</h3>
+                                    <div class="collection-card__meta">
+                                        <i class="fas fa-vest"></i>
+                                        <span>18 items</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Luxury Fashion -->
+                            <div class="collection-card">
+                                <img 
+                                    src="https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                                    srcset="https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80 1x, https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80 2x"
+                                    alt="Luxury designer fashion with elegant evening wear" 
+                                    class="collection-card__image"
+                                    loading="lazy"
+                                    width="600"
+                                    height="900"
+                                >
+                                <div class="collection-card__overlay">
+                                    <h3 class="collection-card__title">Luxury Edit</h3>
+                                    <div class="collection-card__meta">
+                                        <i class="fas fa-gem"></i>
+                                        <span>32 items</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Summer Collection -->
+                            <div class="collection-card">
+                                <img 
+                                    src="https://images.unsplash.com/photo-1525507119028-ed4c6a8415af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                                    srcset="https://images.unsplash.com/photo-1525507119028-ed4c6a8415af?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80 1x, https://images.unsplash.com/photo-1525507119028-ed4c6a8415af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80 2x"
+                                    alt="Summer fashion with light fabrics and bright colors" 
+                                    class="collection-card__image"
+                                    loading="lazy"
+                                    width="600"
+                                    height="800"
+                                >
+                                <div class="collection-card__overlay">
+                                    <h3 class="collection-card__title">Summer Essentials</h3>
+                                    <div class="collection-card__meta">
+                                        <i class="fas fa-sun"></i>
+                                        <span>21 items</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Athleisure -->
+                            <div class="collection-card">
+                                <img 
+                                    src="https://images.unsplash.com/photo-1571019614242-c6b2d1320c15?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                                    srcset="https://images.unsplash.com/photo-1571019614242-c6b2d1320c15?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80 1x, https://images.unsplash.com/photo-1571019614242-c6b2d1320c15?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80 2x"
+                                    alt="Athleisure wear for active lifestyle" 
+                                    class="collection-card__image"
+                                    loading="lazy"
+                                    width="600"
+                                    height="900"
+                                >
+                                <div class="collection-card__overlay">
+                                    <h3 class="collection-card__title">Athleisure</h3>
+                                    <div class="collection-card__meta">
+                                        <i class="fas fa-dumbbell"></i>
+                                        <span>27 items</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Formal Wear -->
+                            <div class="collection-card">
+                                <img 
+                                    src="https://images.unsplash.com/photo-1539109136881-3be7616ae5d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                                    srcset="https://images.unsplash.com/photo-1539109136881-3be7616ae5d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80 1x, https://images.unsplash.com/photo-1539109136881-3be7616ae5d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80 2x"
+                                    alt="Elegant formal wear and evening attire" 
+                                    class="collection-card__image"
+                                    loading="lazy"
+                                    width="600"
+                                    height="900"
+                                >
+                                <div class="collection-card__overlay">
+                                    <h3 class="collection-card__title">Evening Elegance</h3>
+                                    <div class="collection-card__meta">
+                                        <i class="fas fa-moon"></i>
+                                        <span>15 items</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Sustainable Fashion -->
+                            <div class="collection-card">
+                                <img 
+                                    src="https://images.unsplash.com/photo-1609505848912-5fcd397a3a1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                                    srcset="https://images.unsplash.com/photo-1609505848912-5fcd397a3a1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80 1x, https://images.unsplash.com/photo-1609505848912-5fcd397a3a1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80 2x"
+                                    alt="Eco-friendly and sustainable fashion collection" 
+                                    class="collection-card__image"
+                                    loading="lazy"
+                                    width="600"
+                                    height="800"
+                                >
+                                <div class="collection-card__overlay">
+                                    <h3 class="collection-card__title">Sustainable Style</h3>
+                                    <div class="collection-card__meta">
+                                        <i class="fas fa-leaf"></i>
+                                        <span>19 items</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Accessories -->
+                            <div class="collection-card">
+                                <img 
+                                    src="https://images.unsplash.com/photo-1617137968427-85924c800a22?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                                    srcset="https://images.unsplash.com/photo-1617137968427-85924c800a22?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80 1x, https://images.unsplash.com/photo-1617137968427-85924c800a22?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80 2x"
+                                    alt="Fashion accessories and jewelry collection" 
+                                    class="collection-card__image"
+                                    loading="lazy"
+                                    width="600"
+                                    height="900"
+                                >
+                                <div class="collection-card__overlay">
+                                    <h3 class="collection-card__title">Accessory Edit</h3>
+                                    <div class="collection-card__meta">
+                                        <i class="fas fa-ring"></i>
+                                        <span>42 items</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+                
+                <!-- RIVO Bottom Navigation -->
+                <nav class="nav-wrapper" aria-label="Main navigation">
+                    <div class="bottom-nav-container">
+                        <a href="index.html" class="nav-item" aria-label="Home">
+                            <i class="fas fa-home" aria-hidden="true"></i>
+                            <span>Home</span>
+                        </a>
+                        <a href="discover.html" class="nav-item" aria-label="Discover" aria-current="page">
+                            <i class="fas fa-compass" aria-hidden="true"></i>
+                            <span>Discover</span>
+                        </a>
+                        <a href="profile.html" class="nav-item" aria-label="Profile">
+                            <i class="fas fa-user" aria-hidden="true"></i>
+                            <span>Profile</span>
+                        </a>
+                    </div>
+                </nav>
+                </main>
+                <!-- Back to top button -->
+                <button class="back-to-top" aria-label="Back to top">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script type="module">
+        // Import and initialize the application
+        import { initApp } from './js/core/app.js';
+        import { initDiscoverPage } from './js/features/pages/discover.js';
+        
+        // Initialize the app
+        initApp();
+        
+        // Initialize discover page specific functionality
+        document.addEventListener('DOMContentLoaded', initDiscoverPage);
+    </script>
+</body>
+</html>
