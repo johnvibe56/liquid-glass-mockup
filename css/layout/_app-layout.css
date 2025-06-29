@@ -1,0 +1,130 @@
+/* App Layout */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+}
+
+.app-viewport {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+  position: relative;
+  padding-bottom: var(--nav-height, 60px); /* Space for fixed navigation */
+  box-sizing: border-box;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.app-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  min-height: 100vh;
+  padding-top: 60px; /* Space for fixed header */
+  padding-bottom: var(--nav-height, 60px); /* Space for fixed nav */
+  box-sizing: border-box;
+  /* Remove background to fix stacking context */
+  background: none;
+}
+
+/* Page container styles */
+.page {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  background: var(--bg-primary);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  visibility: hidden;
+  padding-top: 60px; /* Space for header */
+  padding-bottom: var(--nav-height, 60px); /* Space for bottom nav */
+  /* Ensure scrolling works on iOS */
+  -webkit-overflow-scrolling: touch;
+  /* Create a new stacking context */
+  transform: translateZ(0);
+  /* Allow momentum scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
+  /* Prevent horizontal scrollbar */
+  overflow-x: hidden;
+}
+
+.page.active {
+  display: flex !important;
+  opacity: 1 !important;
+  z-index: 1;
+  visibility: visible !important;
+}
+
+/* Ensure the discover page is visible when active */
+#discover-page {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Page header styles are in _header.css */
+.page-header > * {
+  pointer-events: auto; /* Re-enable clicks on header content */
+}
+
+.page-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+  color: var(--text-primary);
+}
+
+/* Main content area */
+.main-content {
+  flex: 1;
+  padding: 1rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  /* Let the page handle scrolling */
+  overflow: visible;
+  /* Ensure content takes full height */
+  min-height: calc(100vh - var(--header-height, 60px) - var(--nav-height, 60px));
+  padding-bottom: 20px; /* Small padding at bottom */
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  /* Create a new stacking context */
+  isolation: isolate;
+  /* Ensure smooth scrolling */
+  scroll-behavior: smooth;
+  /* Prevent any potential scrolling issues */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  /* Fix for iOS scrolling */
+  -webkit-overflow-scrolling: touch;
+  /* Allow momentum scrolling */
+  overscroll-behavior-y: contain;
+  /* Prevent horizontal scrollbar */
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.main-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.main-content {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

@@ -13,15 +13,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Liquid Glass Mockup</title>
-    <!-- Font Awesome for icons - In Flutter, use IconData from material icons -->
+    <title>Feed - RIVO</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Main CSS -->
+    <style>
+      /* Test style to check if glass effect works */
+      .page-header {
+        background: rgba(255, 255, 255, 0.3) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+      }
+    </style>
     <link rel="stylesheet" href="css/main.css">
-    <!-- Shame CSS (temporary fixes) -->
-    <link rel="stylesheet" href="css/shame.css">
-</head>
+    </head>
 <body>
+
     <!--
       Flutter Equivalent:
       class PhoneFrame extends StatelessWidget {
@@ -50,192 +56,220 @@
                     <div class="gradient-overlay"></div>
                 </div>
 
-                <!--
-                  Flutter Equivalent:
-                  class DiscoveryScreen extends StatelessWidget {
-                    @override
-                    Widget build(BuildContext context) {
-                      return Scaffold(
-                        backgroundColor: Colors.transparent,
-                        appBar: AppBar(
-                          title: Text('Discovery'),
-                          backgroundColor: Colors.white.withOpacity(0.8),
-                          elevation: 0,
-                          actions: [
-                            // New Post Button
-                            Padding(
-                              padding: EdgeInsets.only(right: 16.0),
-                              child: ElevatedButton.icon(
-                                onPressed: () {},
-                                icon: Icon(Icons.add),
-                                label: Text('New Post'),
-                                style: ElevatedButton.styleFrom(
-                                  // Match glass button style
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        body: ProductFeed(),
-                      );
-                    }
-                  }
-                -->
-                <main class="main-content">
-                    <!-- App Bar with Glass Effect -->
-                    <header class="page-header">
-                        <h1 class="page-title">Discovery</h1>
+                <!-- Main Feed Page -->
+                <div id="feed-page" class="page active">
+                    <!-- Top Bar - Glass Effect -->
+                    <div class="top-bar">
+                        <h1 class="page-title">Feed</h1>
                         <button type="button" class="new-post-button" aria-label="Create new post">
-                            <i class="fas fa-plus" aria-hidden="true"></i>
+                            <i class="fas fa-plus"></i>
                         </button>
-                    </header>
+                    </div>
+                    <main class="main-content">
+                        <section class="product-grid">
+                            <!-- Product Card 1 -->
+                            <article class="product-card">
+                                <div class="product-image">
+                                    <img src="images/alexandra-gorn-WF0LSThlRmw-unsplash.jpg"
+                                         alt="Vintage 1970s Denim Jacket"
+                                         loading="lazy">
+                                    <span class="product-badge">-20%</span>
+                                    <div class="product-actions">
+                                        <button type="button" class="action-button" aria-label="Like">
+                                            <i class="far fa-heart" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="product-details">
+                                    <div class="product-header">
+                                        <h3 class="product-title">1970s Denim Jacket</h3>
+                                        <span class="product-price">$89.99</span>
+                                    </div>
+                                    <div class="product-meta">
+                                        <div class="product-seller">
+                                            <img src="images/alexandra-gorn-WF0LSThlRmw-unsplash.jpg" 
+                                                 alt="Retro Threads" 
+                                                 class="seller-avatar">
+                                            <span class="seller-name">Retro Threads</span>
+                                        </div>
+                                        <div class="seller-status active">
+                                            Active Now
+                                        </div>
+                                    </div>
+                                    <div class="product-social-actions">
+                                        <div class="social-stats">
+                                            <div class="social-stat">
+                                                <i class="far fa-heart"></i>
+                                                <span>124</span>
+                                            </div>
+                                            <div class="social-stat">
+                                                <i class="far fa-comment"></i>
+                                                <span>24</span>
+                                            </div>
+                                        </div>
+                                        <div class="social-actions">
+                                            <button class="social-button like-button" aria-label="Like">
+                                                <i class="far fa-heart"></i>
+                                            </button>
+                                            <button class="social-button" aria-label="Comment">
+                                                <i class="far fa-comment"></i>
+                                            </button>
+                                            <button class="social-button" aria-label="Share">
+                                                <i class="far fa-share-square"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
 
-                    <!--
-                      Flutter Equivalent:
-                      class ProductFeed extends StatelessWidget {
-                        @override
-                        Widget build(BuildContext context) {
-                          return ListView.builder(
-                            padding: EdgeInsets.only(bottom: 80), // Space for bottom nav
-                            itemCount: products.length,
-                            itemBuilder: (context, index) {
-                              return ProductCard(product: products[index]);
-                            },
-                          );
-                        }
-                      }
-                    -->
-                    <section class="product-feed">
-                        <!-- Vintage Clothing Item 1 -->
-                        <article class="product-card">
-                            <div class="product-text-overlay">
-                                <h3 class="product-name">1970s Denim Jacket</h3>
-                                <p class="product-description">Authentic vintage Levi's denim jacket with original wash. Size large, excellent condition.</p>
-                                <div class="product-meta">
-                                    <span class="seller">By Retro Threads</span>
-                                    <span class="price">$89.99</span>
+                            <!-- Product Card 2 -->
+                            <article class="product-card">
+                                <div class="product-image">
+                                    <img src="images/girl-with-red-hat-qyy6pmM2Hg8-unsplash.jpg"
+                                         alt="Retro Floral Dress"
+                                         loading="lazy">
+                                    <span class="product-badge">New</span>
+                                    <div class="product-actions">
+                                        <button type="button" class="action-button" aria-label="Like">
+                                            <i class="far fa-heart" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="product-image">
-                                <img src="images/alexandra-gorn-WF0LSThlRmw-unsplash.jpg"
-                                     alt="Vintage 1970s Denim Jacket"
-                                     loading="lazy"
-                                     class="product-img">
-                                <div class="product-actions">
-                                    <button type="button" class="action-button like-button" aria-label="Like">
-                                        <i class="far fa-heart" aria-hidden="true"></i>
-                                    </button>
-                                    <button type="button" class="action-button save-button" aria-label="Save">
-                                        <i class="far fa-bookmark" aria-hidden="true"></i>
-                                    </button>
+                                <div class="product-details">
+                                    <div class="product-header">
+                                        <h3 class="product-title">Retro Floral Dress</h3>
+                                        <span class="product-price">$65.50</span>
+                                    </div>
+                                    <div class="product-meta">
+                                        <div class="product-seller">
+                                            <img src="images/girl-with-red-hat-qyy6pmM2Hg8-unsplash.jpg" 
+                                                 alt="Vintage Vault" 
+                                                 class="seller-avatar">
+                                            <span class="seller-name">Vintage Vault</span>
+                                        </div>
+                                        <div class="seller-status new">
+                                            New Seller
+                                        </div>
+                                    </div>
+                                    <div class="product-social-actions">
+                                        <div class="social-stats">
+                                            <div class="social-stat">
+                                                <i class="far fa-heart"></i>
+                                                <span>89</span>
+                                            </div>
+                                            <div class="social-stat">
+                                                <i class="far fa-comment"></i>
+                                                <span>12</span>
+                                            </div>
+                                        </div>
+                                        <div class="social-actions">
+                                            <button class="social-button like-button" aria-label="Like">
+                                                <i class="far fa-heart"></i>
+                                            </button>
+                                            <button class="social-button" aria-label="Comment">
+                                                <i class="far fa-comment"></i>
+                                            </button>
+                                            <button class="social-button" aria-label="Share">
+                                                <i class="far fa-share-square"></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </article>
+                            </article>
 
-                        <!-- Vintage Clothing Item 2 -->
-                        <article class="product-card">
-                            <div class="product-text-overlay">
-                                <h3 class="product-name">Retro Floral Dress</h3>
-                                <p class="product-description">1980s floral wrap dress with puff sleeves. Perfect summer vintage find, size medium.</p>
-                                <div class="product-meta">
-                                    <span class="seller">By Vintage Vault</span>
-                                    <span class="price">$65.50</span>
+                            <!-- Product Card 3 -->
+                            <article class="product-card">
+                                <div class="product-image">
+                                    <img src="images/cristofer-maximilian-AqLIkOzWDAk-unsplash.jpg"
+                                         alt="Vintage Leather Biker Jacket"
+                                         loading="lazy">
+                                    <span class="product-badge">New</span>
+                                    <div class="product-actions">
+                                        <button type="button" class="action-button" aria-label="Like">
+                                            <i class="far fa-heart" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="product-image">
-                                <img src="images/girl-with-red-hat-qyy6pmM2Hg8-unsplash.jpg"
-                                     alt="Vintage Floral Dress"
-                                     loading="lazy"
-                                     class="product-img">
-                                <div class="product-actions">
-                                    <button type="button" class="action-button like-button" aria-label="Like">
-                                        <i class="far fa-heart" aria-hidden="true"></i>
-                                    </button>
-                                    <button type="button" class="action-button save-button" aria-label="Save">
-                                        <i class="far fa-bookmark" aria-hidden="true"></i>
-                                    </button>
+                                <div class="product-details">
+                                    <div class="product-header">
+                                        <h3 class="product-title">Leather Biker Jacket</h3>
+                                        <span class="product-price">$129.99</span>
+                                    </div>
+                                    <div class="product-meta">
+                                        <div class="product-seller">
+                                            <img src="images/cristofer-maximilian-AqLIkOzWDAk-unsplash.jpg" 
+                                                 alt="Leather & Lace" 
+                                                 class="seller-avatar">
+                                            <span class="seller-name">Leather & Lace</span>
+                                        </div>
+                                        <div class="seller-status active">
+                                            Active Now
+                                        </div>
+                                    </div>
+                                    <div class="product-social-actions">
+                                        <div class="social-stats">
+                                            <div class="social-stat">
+                                                <i class="far fa-heart"></i>
+                                                <span>156</span>
+                                            </div>
+                                            <div class="social-stat">
+                                                <i class="far fa-comment"></i>
+                                                <span>32</span>
+                                            </div>
+                                        </div>
+                                        <div class="social-actions">
+                                            <button class="social-button like-button" aria-label="Like">
+                                                <i class="far fa-heart"></i>
+                                            </button>
+                                            <button class="social-button" aria-label="Comment">
+                                                <i class="far fa-comment"></i>
+                                            </button>
+                                            <button class="social-button" aria-label="Share">
+                                                <i class="far fa-share-square"></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </article>
+                            </article>
+                        </section>
+                    </main>
+                    
+                    <!-- RIVO Bottom Navigation -->
+                    <nav class="nav-wrapper" aria-label="Main navigation">
+                        <div class="bottom-nav-container">
+                            <a href="index.html" class="nav-item" aria-label="Home" aria-current="page">
+                                <i class="fas fa-home" aria-hidden="true"></i>
+                                <span>Home</span>
+                            </a>
+                            <a href="discover.html" class="nav-item" aria-label="Discover">
+                                <i class="fas fa-compass" aria-hidden="true"></i>
+                                <span>Discover</span>
+                            </a>
+                            <a href="profile.html" class="nav-item" aria-label="Profile">
+                                <i class="fas fa-user" aria-hidden="true"></i>
+                                <span>Profile</span>
+                            </a>
+                        </div>
+                    </nav>
+                    </main>
 
-                        <!-- Vintage Clothing Item 3 -->
-                        <article class="product-card">
-                            <div class="product-text-overlay">
-                                <h3 class="product-name">Leather Biker Jacket</h3>
-                                <p class="product-description">Vintage 1990s black leather moto jacket. Genuine leather with quilted shoulders.</p>
-                                <div class="product-meta">
-                                    <span class="seller">By Retro Classics</span>
-                                    <span class="price">$129.99</span>
-                                </div>
-                            </div>
-                            <div class="product-image">
-                                <img src="images/cristofer-maximilian-AqLIkOzWDAk-unsplash.jpg"
-                                     alt="Vintage Leather Biker Jacket"
-                                     loading="lazy"
-                                     class="product-img">
-                                <div class="product-actions">
-                                    <button type="button" class="action-button like-button" aria-label="Like">
-                                        <i class="far fa-heart" aria-hidden="true"></i>
-                                    </button>
-                                    <button type="button" class="action-button save-button" aria-label="Save">
-                                        <i class="far fa-bookmark" aria-hidden="true"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </article>
+                <!-- Include navigation -->
+                <div id="nav-placeholder"></div>
 
-                        <!-- Vintage Clothing Item 4 -->
-                        <article class="product-card">
-                            <div class="product-text-overlay">
-                                <h3 class="product-name">Retro High-Waist Jeans</h3>
-                                <p class="product-description">1980s high-waist straight leg jeans. Light wash with minimal distressing.</p>
-                                <div class="product-meta">
-                                    <span class="seller">By Denim Revival</span>
-                                    <span class="price">$74.99</span>
-                                </div>
-                            </div>
-                            <div class="product-image">
-                                <img src="images/crew-EMWgB-BTyh0-unsplash.jpg"
-                                     alt="Vintage High-Waist Jeans"
-                                     loading="lazy"
-                                     class="product-img">
-                                <div class="product-actions">
-                                    <button type="button" class="action-button like-button" aria-label="Like">
-                                        <i class="far fa-heart" aria-hidden="true"></i>
-                                    </button>
-                                    <button type="button" class="action-button save-button" aria-label="Save">
-                                        <i class="far fa-bookmark" aria-hidden="true"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Post 5 -->
-                        <article class="product-card">
-                            <div class="product-text-overlay">
-                                <h3 class="product-name">Smartphone Stand</h3>
-                                <p class="product-description">Adjustable phone stand for comfortable viewing. Compatible with all smartphones.</p>
-                                <div class="product-meta">
-                                    <span class="seller">By TechEssentials</span>
-                                    <span class="price">$24.99</span>
-                                </div>
-                            </div>
-                            <div class="product-image">
-                                <img src="images/junko-nakase-Q-72wa9-7Dg-unsplash.jpg"
-                                     alt="Smartphone Stand"
-                                     loading="lazy">
-                                <div class="product-actions">
-                                    <button type="button" class="action-button like-button" aria-label="Like">
-                                        <i class="far fa-heart" aria-hidden="true"></i>
-                                    </button>
-                                    <button type="button" class="action-button save-button" aria-label="Save">
-                                        <i class="far fa-bookmark" aria-hidden="true"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </article>
-                    </section>
-                </main>
+                <!-- JavaScript -->
+                <script type="module">
+                    // Import and initialize the application
+                    import { initApp } from './js/core/app.js';
+                    import { initFeedPage } from './js/features/pages/feed.js';
+                    
+                    // Initialize the app
+                    initApp();
+                    
+                    // Initialize feed page specific functionality
+                    document.addEventListener('DOMContentLoaded', initFeedPage);
+                </script>
+                    </main>
+                </div>
 
                 <!--
                   Flutter Equivalent:
@@ -281,6 +315,7 @@
                       );
                     }
 
+
                     Widget _buildNavItem(int index, IconData icon, String label) {
                       final isSelected = currentIndex == index;
                       return GestureDetector(
@@ -303,35 +338,16 @@
                         ),
                       );
                     }
-                  }
-                -->
-                <!-- Bottom Navigation -->
-                <div class="nav-wrapper">
-                    <div class="bottom-nav-container">
-                        <a href="#" class="nav-item active" aria-label="Home">
-                            <i class="fas fa-home"></i>
-                            <span>Home</span>
-                        </a>
-                        <a href="#" class="nav-item" aria-label="Explore">
-                            <i class="fas fa-compass"></i>
-                            <span>Explore</span>
-                        </a>
-                        <a href="#" class="nav-item" aria-label="Profile">
-                            <i class="fas fa-user"></i>
-                            <span>Profile</span>
-                        </a>
-                    </div>
-
-                    <!-- Search Button - In Flutter, use FloatingActionButton -->
-                    <a href="#" class="search-button" aria-label="Search">
-                        <i class="fas fa-search"></i>
-                    </a>
-                </div>
-            </div>
     </div>
 
+
     <!-- JavaScript -->
-    <script src="js/scroll-handler.js" type="module"></script>
-    <script src="js/script.js" type="module" defer></script>
+    <script type="module">
+        // Import and initialize the application
+        import { initializeApp } from './js/core/app.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeApp();
+        });
+    </script>
 </body>
 </html>

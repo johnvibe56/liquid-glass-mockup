@@ -9,24 +9,17 @@
    Navigation
    ========================================================================== */
 
-/* FIXME: Temporary fix for white line in collapsed navbar */
-.nav-wrapper {
-  overflow: visible !important; /* Override any overflow settings */
-}
-
-/* FIXME: Temporary adjustment for bottom nav positioning */
-.bottom-nav-container {
-  position: relative;
-  bottom: -1px; /* Pull up by 1px to hide any potential white line */
-}
+/* Nav wrapper styles moved to _navigation.css */
 
 /* ==========================================================================
    Header
    ========================================================================== */
 
-/* FIXME: Temporary fix for header shadow */
+/* Header styles moved to _header.css for consistency */
+/* Using !important to ensure our glass effect takes precedence */
 .page-header {
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
 /* ==========================================================================

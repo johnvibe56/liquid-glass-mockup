@@ -16,9 +16,15 @@
 @import 'components/_buttons.css';
 @import 'components/_cards.css';
 @import 'components/_navigation.css';
+@import 'components/_top-bar.css'; /* Top bar with glass effect */
+@import 'components/_product-card.css'; /* Product card component */
+@import 'components/_product-grid.css'; /* Product grid layout */
+@import 'components/_collections-grid.css'; /* Collections grid component */
+@import 'components/_profile.css'; /* Profile page component styles */
 @import 'components/_components.css'; /* General component styles */
 
 /* 4. Layout Styles */
+@import 'layout/_app-layout.css'; /* App layout structure */
 @import 'layout/_grid.css';
 @import 'layout/_header.css';
 @import 'layout/_layout.css'; /* General layout styles */
@@ -30,6 +36,8 @@
 
 /* 6. Page-specific Styles */
 @import 'pages/_home.css';
+@import 'pages/_product-detail.css'; /* Product detail page styles */
+@import 'pages/_discover.css'; /* Discover page styles */
 @import 'pages/_pages.css'; /* General page styles */
 
 /* 7. Shame styles (temporary fixes, quick overrides) */
