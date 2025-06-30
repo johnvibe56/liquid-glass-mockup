@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Welcome to Liquid Glass</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pages/onboarding.css">
+</head>
+<body class="onboarding-page">
+    <div class="onboarding-container">
+        <!-- Progress Indicator -->
+        <div class="progress-indicator">
+            <div class="progress-bar">
+                <div class="progress" style="width: 25%;"></div>
+            </div>
+        </div>
+
+        <!-- Slides Container -->
+        <div class="slides-container">
+            <!-- Slide 1 -->
+            <div class="slide active" data-slide="1">
+                <div class="slide-content">
+                    <div class="illustration">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h2>Discover Unique Styles</h2>
+                    <p>Find one-of-a-kind fashion pieces from independent designers and brands around the world.</p>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide" data-slide="2">
+                <div class="slide-content">
+                    <div class="illustration">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h2>Save Your Favorites</h2>
+                    <p>Heart items you love and create your personal collection of inspiring fashion.</p>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide" data-slide="3">
+                <div class="slide-content">
+                    <div class="illustration">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h2>Lightning Fast Checkout</h2>
+                    <p>Complete your purchase in just a few taps with our secure payment system.</p>
+                </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="slide" data-slide="4">
+                <div class="slide-content">
+                    <div class="illustration">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h2>Join Our Community</h2>
+                    <p>Be part of a community that celebrates unique style and independent designers.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="onboarding-nav">
+            <button class="btn btn-outline skip-btn">Skip</button>
+            <div class="dots-container">
+                <span class="dot active" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+                <span class="dot" data-slide="3"></span>
+                <span class="dot" data-slide="4"></span>
+            </div>
+            <button class="btn btn-black next-btn">Next <i class="fas fa-arrow-right"></i></button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            const nextBtn = document.querySelector('.next-btn');
+            const skipBtn = document.querySelector('.skip-btn');
+            const progress = document.querySelector('.progress');
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            // Initialize first slide
+            showSlide(currentSlide);
+
+            // Next button click
+            nextBtn.addEventListener('click', function() {
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    showSlide(currentSlide);
+                    updateProgress();
+                } else {
+                    // On last slide, redirect to sign up
+                    window.location.href = 'signup.html';
+                }
+            });
+
+            // Skip button click
+            skipBtn.addEventListener('click', function() {
+                window.location.href = 'signup.html';
+            });
+
+            // Dot navigation
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const slideIndex = parseInt(this.getAttribute('data-slide')) - 1;
+                    currentSlide = slideIndex;
+                    showSlide(currentSlide);
+                    updateProgress();
+                });
+            });
+
+            // Swipe functionality for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            document.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, false);
+
+            document.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, false);
+
+            function handleSwipe() {
+                if (touchEndX < touchStartX) {
+                    // Swipe left
+                    if (currentSlide < totalSlides - 1) {
+                        currentSlide++;
+                        showSlide(currentSlide);
+                        updateProgress();
+                    }
+                } else if (touchEndX > touchStartX) {
+                    // Swipe right
+                    if (currentSlide > 0) {
+                        currentSlide--;
+                        showSlide(currentSlide);
+                        updateProgress();
+                    }
+                }
+            }
+
+
+            function showSlide(index) {
+                // Hide all slides
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+
+                // Show current slide
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+
+                // Update button text on last slide
+                if (index === totalSlides - 1) {
+                    nextBtn.innerHTML = 'Get Started <i class="fas fa-arrow-right"></i>';
+                    skipBtn.style.visibility = 'hidden';
+                } else {
+                    nextBtn.innerHTML = 'Next <i class="fas fa-arrow-right"></i>';
+                    skipBtn.style.visibility = 'visible';
+                }
+            }
+
+            function updateProgress() {
+                const progressPercentage = ((currentSlide + 1) / totalSlides) * 100;
+                progress.style.width = `${progressPercentage}%`;
+            }
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight' && currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    showSlide(currentSlide);
+                    updateProgress();
+                } else if (e.key === 'ArrowLeft' && currentSlide > 0) {
+                    currentSlide--;
+                    showSlide(currentSlide);
+                    updateProgress();
+                } else if (e.key === 'Escape') {
+                    window.location.href = 'signup.html';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

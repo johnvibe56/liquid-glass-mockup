@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Create Account - Liquid Glass</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pages/auth.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <!-- Step 1: User Details -->
+        <div id="step1" class="signup-step active">
+            <div class="auth-header">
+                <h1>Create Account</h1>
+                <p>Join our fashion community</p>
+            </div>
+
+            <form class="auth-form" id="userDetailsForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-at"></i>
+                        <input type="text" id="username" name="username" placeholder="Choose a username" required>
+                    </div>
+                    <div id="usernameFeedback" class="input-feedback"></div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Continue</button>
+            </form>
+        </div>
+
+        <!-- Step 2: Create Password -->
+        <div id="step2" class="signup-step" style="display: none;">
+            <div class="auth-header">
+                <h1>Create Password</h1>
+                <p>Secure your account</p>
+            </div>
+
+            <form class="auth-form" id="passwordForm">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" placeholder="Create a password" required>
+                        <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="password-requirements">
+                        <p>Must be at least 8 characters</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                    </div>
+                </div>
+
+                <div class="form-group terms">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <span class="checkmark"></span>
+                        I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+            </form>
+        </div>
+
+        <div class="auth-divider">
+            <span>or sign up with</span>
+        </div>
+
+        <div class="social-login">
+            <button type="button" class="btn btn-outline btn-social">
+                <i class="fab fa-google"></i>
+                Google
+            </button>
+            <button type="button" class="btn btn-outline btn-social">
+                <i class="fab fa-apple"></i>
+                Apple
+            </button>
+        </div>
+
+        <div class="auth-footer">
+            Already have an account? <a href="signin.html">Sign in</a>
+        </div>
+    </div>
+
+    <script>
+        // Toggle password visibility
+        function setupPasswordToggles() {
+            document.querySelectorAll('.toggle-password').forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const passwordInput = this.parentElement.querySelector('input');
+                    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                    passwordInput.setAttribute('type', type);
+                    this.querySelector('i').classList.toggle('fa-eye');
+                    this.querySelector('i').classList.toggle('fa-eye-slash');
+                });
+            });
+        }
+
+        // Handle step 1 form submission
+        document.getElementById('userDetailsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Simple validation - check if username is not empty
+            const username = document.getElementById('username').value.trim();
+            const usernameFeedback = document.getElementById('usernameFeedback');
+            
+            if (username.length < 3) {
+                usernameFeedback.textContent = 'Username must be at least 3 characters';
+                usernameFeedback.style.color = '#e74c3c';
+                return;
+            }
+            
+            // If valid, proceed to step 2
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('step2').style.display = 'block';
+            setupPasswordToggles(); // Re-initialize password toggles for the new step
+        });
+
+        // Handle final form submission
+        document.getElementById('passwordForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+            
+            if (password.length < 8) {
+                alert('Password must be at least 8 characters');
+                return;
+            }
+            
+            // Form is valid, submit the data
+            console.log('Account created successfully');
+            // Here you would typically submit the form data to your server
+        });
+
+        // Initialize password toggles on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setupPasswordToggles();
+        });
+    </script>
+</body>
+</html>
