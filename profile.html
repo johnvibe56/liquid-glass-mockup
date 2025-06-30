@@ -2,250 +2,419 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Profile - RIVO</title>
+    <meta name="description" content="Your RIVO profile - Showcase your style and connect with others">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/pages/_profile.css">
-    </head>
-<body>
-    <div class="app-viewport">
-        <div class="app-container">
-            <div class="background">
-                <div class="gradient-overlay"></div>
+    <link rel="stylesheet" href="css/pages/profile.css">
+    <!-- Scripts will be loaded at the end of the body -->
+</head>
+<body class="profile-page" data-page="profile">
+    <!-- Top Navigation -->
+    <nav class="top-bar">
+        <h1 class="top-bar__title">Profile</h1>
+        <button class="top-bar__search" id="searchBox" aria-label="Search">
+            <i class="fas fa-search"></i>
+        </button>
+    </nav>
+    
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress"></div>
+    
+    <main class="main-content container mx-auto px-4">
+        <!-- Compact Profile Header -->
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Profile" class="profile-picture">
             </div>
-            
-            <div class="page active">
-                <!-- Top Bar - Glass Effect -->
-                <div class="top-bar">
-                    <h1 class="page-title">Profile</h1>
-                    <button type="button" class="btn-icon" aria-label="Settings">
-                        <i class="fas fa-cog"></i>
+            <div class="profile-meta">
+                <h1 class="profile-name">Sarah Johnson</h1>
+                <p class="profile-handle">@sarahj</p>
+                <div class="profile-stats">
+                    <div class="stat">
+                        <span class="stat-number">1.2k</span>
+                        <span class="stat-label">followers</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">845</span>
+                        <span class="stat-label">following</span>
+                    </div>
+                </div>
+                <p class="profile-bio">Fashion enthusiast | Travel lover | Coffee addict</p>
+                <div class="style-tags">
+                    <span class="style-tag">#Minimalist</span>
+                    <span class="style-tag">#Streetwear</span>
+                    <span class="style-tag">#Vintage</span>
+                </div>
+            </div>
+            <button class="btn btn-edit">
+                <i class="fas fa-pen"></i>
+            </button>
+        </div>
+
+        <!-- Spotlight Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2>Spotlight</h2>
+                <button class="btn-text" id="edit-spotlight">
+                    <i class="fas fa-pen"></i>
+                </button>
+            </div>
+            <div class="spotlight-scroll">
+                <div class="spotlight-item" data-id="1">
+                    <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Spotlight item">
+                    <button class="remove-btn" title="Remove from spotlight">
+                        <i class="fas fa-times"></i>
                     </button>
                 </div>
-                
-                <main class="main-content profile-page">
-                    <!-- Profile Header with Full-width Cover -->
-                    <div class="profile-cover">
-                        <div class="cover-image" style="background-image: url('https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"></div>
-                        <div class="profile-avatar-container">
-                            <div class="profile-avatar">
-                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Alex Johnson">
-                                <button class="btn-avatar-edit" aria-label="Edit profile picture">
-                                    <i class="fas fa-camera"></i>
-                                </button>
-                            </div>
-                            <button class="btn-edit">
-                                <i class="fas fa-pen"></i> Edit Profile
-                            </button>
-                        </div>
+                <div class="spotlight-item" data-id="2">
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Spotlight item">
+                    <button class="remove-btn" title="Remove from spotlight">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="spotlight-item" data-id="3">
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Spotlight item">
+                    <button class="remove-btn" title="Remove from spotlight">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="spotlight-item add-new" id="add-to-spotlight">
+                    <i class="fas fa-plus"></i>
+                    <span>Add to Spotlight</span>
+                    <div class="empty-buy">
+                        <i class="fas fa-plus"></i>
                     </div>
-                    
-                    <!-- Profile Info -->
-                    <section class="profile-info-section">
-                        <div class="profile-header">
-                            <h1>Alex Johnson</h1>
-                            <p class="profile-handle">@alexjohnson</p>
-                            
-                            <style>
-                                .profile-bio,
-                                .stat-label,
-                                .stat-number {
-                                    color: #1a1a1a !important;
-                                    -webkit-text-fill-color: #1a1a1a !important;
-                                    opacity: 1 !important;
-                                }
-                                .stat-label {
-                                    font-size: 0.875rem !important;
-                                    font-weight: 500 !important;
-                                }
-                            </style>
-                            <p class="profile-bio">Fashion enthusiast | Streetwear lover | Minimalist at heart. Sharing my style journey and favorite finds from around the world. ✨ #OOTD</p>
-                            
-                            <div class="profile-location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>San Francisco, CA</span>
-                            </div>
-                            
-                            <div class="profile-stats">
-                                <div class="stat">
-                                    <span class="stat-number">128</span>
-                                    <span class="stat-label">Posts</span>
-                                </div>
-                                <div class="stat">
-                                    <span class="stat-number">1.2k</span>
-                                    <span class="stat-label">Followers</span>
-                                </div>
-                                <div class="stat">
-                                    <span class="stat-number">456</span>
-                                    <span class="stat-label">Following</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="style-highlight">
-                            <h3>My Style</h3>
-                            <div class="style-tags">
-                                <span class="style-tag">#Vintage</span>
-                                <span class="style-tag">#Minimalist</span>
-                                <span class="style-tag">#Streetwear</span>
-                                <span class="style-tag">#90sVibes</span>
-                                <span class="style-tag">#Sneakerhead</span>
-                            </div>
-                        </div>
-                    
-
-                    <!-- Instagram Style Tabs -->
-                    <div class="ig-tabs">
-                        <div class="ig-tabs-container">
-                            <button class="ig-tab active" data-tab="posts">
-                                <i class="fas fa-th-large"></i>
-                                <span>POSTS</span>
-                                <div class="ig-tab-indicator"></div>
-                            </button>
-                            <button class="ig-tab" data-tab="saved">
-                                <i class="far fa-bookmark"></i>
-                                <span>SAVED</span>
-                                <div class="ig-tab-indicator"></div>
-                            </button>
-                        </div>
-                        
-                        <!-- Posts Tab -->
-                        <div class="tab-content active" id="posts-tab">
-                            <div class="pinterest-grid">
-                                <!-- Post items will be dynamically loaded here -->
-                                <div class="pinterest-item">
-                                    <div class="pinterest-image-container">
-                                        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Post" loading="lazy">
-                                        <div class="pinterest-overlay">
-                                            <div class="pinterest-stats">
-                                                <span><i class="fas fa-heart"></i> 124</span>
-                                                <span><i class="fas fa-comment"></i> 23</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- More post items with different aspect ratios -->
-                                <div class="pinterest-item">
-                                    <div class="pinterest-image-container">
-                                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Post" loading="lazy">
-                                        <div class="pinterest-overlay">
-                                            <div class="pinterest-stats">
-                                                <span><i class="fas fa-heart"></i> 89</span>
-                                                <span><i class="fas fa-comment"></i> 12</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="pinterest-item">
-                                    <div class="pinterest-image-container">
-                                        <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Post" loading="lazy">
-                                        <div class="pinterest-overlay">
-                                            <div class="pinterest-stats">
-                                                <span><i class="fas fa-heart"></i> 156</span>
-                                                <span><i class="fas fa-comment"></i> 34</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="pinterest-item">
-                                    <div class="pinterest-image-container">
-                                        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Post" loading="lazy">
-                                        <div class="pinterest-overlay">
-                                            <div class="pinterest-stats">
-                                                <span><i class="fas fa-heart"></i> 201</span>
-                                                <span><i class="fas fa-comment"></i> 42</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Saved Tab -->
-                        <div class="tab-content" id="saved-tab">
-                            <div class="pinterest-grid">
-                                <!-- Saved Collection 1 -->
-                                <div class="pinterest-item">
-                                    <div class="pinterest-image-container">
-                                        <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Saved collection" loading="lazy">
-                                        <div class="pinterest-overlay">
-                                            <div class="pinterest-collection">
-                                                <span class="collection-count">12 items</span>
-                                                <h5>Work Wear</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- More saved items -->
-                                <div class="pinterest-item">
-                                    <div class="pinterest-image-container">
-                                        <img src="https://images.unsplash.com/photo 1520367445093-50dc08a59d9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Saved item" loading="lazy">
-                                        <div class="pinterest-overlay">
-                                            <div class="pinterest-actions">
-                                                <button class="btn-icon" aria-label="Like">
-                                                    <i class="fas fa-heart"></i>
-                                                </button>
-                                                <button class="btn-icon" aria-label="Save">
-                                                    <i class="fas fa-bookmark"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="pinterest-item">
-                                    <div class="pinterest-image-container">
-                                        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Saved item" loading="lazy">
-                                        <div class="pinterest-overlay">
-                                            <div class="pinterest-actions">
-                                                <button class="btn-icon" aria-label="Like">
-                                                    <i class="fas fa-heart"></i>
-                                                </button>
-                                                <button class="btn-icon" aria-label="Save">
-                                                    <i class="fas fa-bookmark"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </main>
-                
-                <!-- RIVO Bottom Navigation -->
-                <nav class="nav-wrapper" aria-label="Main navigation">
-                    <div class="bottom-nav-container">
-                        <a href="index.html" class="nav-item" aria-label="Home">
-                            <i class="fas fa-home" aria-hidden="true"></i>
-                            <span>Home</span>
-                        </a>
-                        <a href="discover.html" class="nav-item" aria-label="Discover">
-                            <i class="fas fa-compass" aria-hidden="true"></i>
-                            <span>Discover</span>
-                        </a>
-                        <a href="profile.html" class="nav-item" aria-label="Profile" aria-current="page">
-                            <i class="fas fa-user" aria-hidden="true"></i>
-                            <span>Profile</span>
-                        </a>
-                    </div>
-                </nav>
-                </main>
+                    <span class="buy-title">Add New</span>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- JavaScript -->
-    <script type="module">
-        // Import and initialize the application
-        import { initApp } from './js/core/app.js';
-        import { initProfilePage } from './js/features/pages/profile.js';
-        
-        // Initialize the app
-        initApp();
-        
-        // Initialize profile page specific functionality
-        document.addEventListener('DOMContentLoaded', initProfilePage);
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="style">
+                <i class="fas fa-th-large"></i>
+                <span>My Style</span>
+            </button>
+            <button class="tab-btn" data-tab="purchases">
+                <i class="fas fa-receipt"></i>
+                <span>Purchase History</span>
+            </button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content active" id="style-tab">
+            <div class="style-grid">
+                <!-- Grid items will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="tab-content" id="purchases-tab" style="display: none;">
+            <div class="purchase-history">
+                <!-- Purchase history will be populated by JavaScript -->
+            </div>
+        </div>
+    </main>
+    
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <div class="bottom-nav__container">
+            <a href="feed.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Feed</span>
+            </a>
+            <a href="discover.html" class="nav-item">
+                <i class="fas fa-compass"></i>
+                <span>Discover</span>
+            </a>
+            <a href="profile.html" class="nav-item active">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Navbar Script -->
+    <script src="js/components/navigation/navbar.js"></script>
+    
+    <script>
+        // Sample spotlight items data
+        let spotlightItems = [
+            {
+                id: '1',
+                image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80',
+                title: 'Summer Look'
+            },
+            {
+                id: '2',
+                image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80',
+                title: 'Denim Days'
+            },
+            {
+                id: '3',
+                image: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80',
+                title: 'Accessory Love'
+            }
+        ];
+
+        // Sample purchase history data
+        const purchaseHistory = [
+            {
+                id: '#ORD-2023-0456',
+                date: '2023-06-15',
+                status: 'Delivered',
+                items: [
+                    { name: 'Floral Summer Dress', price: 89.99, quantity: 1, image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80' },
+                    { name: 'Denim Jacket', price: 129.99, quantity: 1, image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80' }
+                ],
+                total: 219.98,
+                tracking: '1Z999AA1234567890',
+                deliveryDate: '2023-06-18'
+            },
+            {
+                id: '#ORD-2023-0389',
+                date: '2023-05-22',
+                status: 'Delivered',
+                items: [
+                    { name: 'Leather Tote Bag', price: 149.99, quantity: 1, image: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80' }
+                ],
+                total: 149.99,
+                tracking: '1Z999BB1234567890',
+                deliveryDate: '2023-05-25'
+            },
+            {
+                id: '#ORD-2023-0321',
+                date: '2023-04-10',
+                status: 'Returned',
+                items: [
+                    { name: 'Striped Blouse', price: 49.99, quantity: 1, image: 'https://images.unsplash.com/photo-1525506395676-8f6d81508e67?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80' },
+                    { name: 'Slim Fit Jeans', price: 79.99, quantity: 1, image: 'https://images.unsplash.com/photo-1542272604-3f1b527c3822?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80' }
+                ],
+                total: 129.98,
+                returnReason: 'Wrong size',
+                refundStatus: 'Refunded on 2023-04-18'
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sample data for the style grid
+            const styleImages = [
+                'https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80',
+                'https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80',
+                'https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80',
+                'https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80',
+                'https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80',
+                'https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80'
+            ];
+
+            // Populate style grid
+            const styleGrid = document.querySelector('.style-grid');
+            if (styleGrid) {
+                styleImages.forEach(imgUrl => {
+                    const gridItem = document.createElement('div');
+                    gridItem.className = 'grid-item';
+                    gridItem.innerHTML = `<img src="${imgUrl}" alt="Style item" class="grid-image">`;
+                    styleGrid.appendChild(gridItem);
+                });
+            }
+
+            // Initialize spotlight
+            const spotlightContainer = document.querySelector('.spotlight-scroll');
+            const editSpotlightBtn = document.getElementById('edit-spotlight');
+            const addToSpotlightBtn = document.getElementById('add-to-spotlight');
+            let isEditing = false;
+
+            // Render spotlight items
+            function renderSpotlight() {
+                spotlightContainer.innerHTML = '';
+                
+                spotlightItems.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'spotlight-item';
+                    itemElement.dataset.id = item.id;
+                    itemElement.innerHTML = `
+                        <img src="${item.image}" alt="${item.title}">
+                        <button class="remove-btn" title="Remove from spotlight">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    `;
+                    
+                    if (isEditing) {
+                        itemElement.classList.add('editable');
+                    }
+                    
+                    spotlightContainer.appendChild(itemElement);
+                });
+                
+                // Add "Add to Spotlight" button if less than 5 items
+                if (spotlightItems.length < 5) {
+                    const addButton = document.createElement('div');
+                    addButton.className = 'spotlight-item add-new';
+                    addButton.id = 'add-to-spotlight';
+                    addButton.innerHTML = `
+                        <i class="fas fa-plus"></i>
+                        <span>Add to Spotlight</span>
+                    `;
+                    spotlightContainer.appendChild(addButton);
+                    
+                    // Re-attach event listener
+                    addButton.addEventListener('click', () => {
+                        // In a real app, this would open a media picker
+                        alert('Open media picker to add to spotlight');
+                    });
+                }
+                
+                // Attach remove event listeners
+                document.querySelectorAll('.remove-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const itemId = btn.closest('.spotlight-item').dataset.id;
+                        removeFromSpotlight(itemId);
+                    });
+                });
+            }
+            
+            // Toggle edit mode
+            function toggleEditMode() {
+                isEditing = !isEditing;
+                const spotlightSection = document.querySelector('.section');
+                
+                if (isEditing) {
+                    spotlightSection.classList.add('editing');
+                    editSpotlightBtn.innerHTML = '<i class="fas fa-check"></i> Done';
+                } else {
+                    spotlightSection.classList.remove('editing');
+                    editSpotlightBtn.innerHTML = '<i class="fas fa-pen"></i>';
+                }
+                
+                // Re-render to show/hide remove buttons
+                renderSpotlight();
+            }
+            
+            // Remove item from spotlight
+            function removeFromSpotlight(itemId) {
+                spotlightItems = spotlightItems.filter(item => item.id !== itemId);
+                renderSpotlight();
+            }
+            
+            // Event listeners
+            if (editSpotlightBtn) {
+                editSpotlightBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleEditMode();
+                });
+            }
+            
+            // Initialize spotlight
+            renderSpotlight();
+
+            // Initialize tabs
+            const tabs = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs and hide all contents
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(c => {
+                        c.classList.remove('active');
+                        c.style.display = 'none';
+                    });
+                    
+                    // Add active class to clicked tab and show corresponding content
+                    tab.classList.add('active');
+                    const tabId = tab.getAttribute('data-tab');
+                    const activeContent = document.getElementById(`${tabId}-tab`);
+                    if (activeContent) {
+                        activeContent.style.display = 'block';
+                        activeContent.classList.add('active');
+                    }
+                });
+            });
+            
+            // Show the first tab content by default
+            if (tabs.length > 0) {
+                tabs[0].click();
+            }
+            
+            // Populate purchase history
+            const purchaseHistoryContainer = document.querySelector('.purchase-history');
+            if (purchaseHistoryContainer) {
+                if (purchaseHistory.length === 0) {
+                    purchaseHistoryContainer.innerHTML = `
+                        <div class="empty-state">
+                            <i class="fas fa-receipt fa-2x"></i>
+                            <h3>No Purchase History</h3>
+                            <p>Your purchase history will appear here</p>
+                        </div>`;
+                } else {
+                    purchaseHistoryContainer.innerHTML = purchaseHistory.map(order => `
+                        <div class="order-card">
+                            <div class="order-header">
+                                <div>
+                                    <span class="order-id">${order.id}</span>
+                                    <span class="order-date">${new Date(order.date).toLocaleDateString()}</span>
+                                </div>
+                                <span class="status-badge ${order.status.toLowerCase()}">${order.status}</span>
+                            </div>
+                            <div class="order-items">
+                                ${order.items.map(item => `
+                                    <div class="order-item">
+                                        <img src="${item.image}" alt="${item.name}" class="item-image">
+                                        <div class="item-details">
+                                            <span class="item-name">${item.name}</span>
+                                            <span class="item-price">$${item.price.toFixed(2)} × ${item.quantity}</span>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <div class="order-footer">
+                                <div class="order-total">
+                                    <span>Total:</span>
+                                    <strong>$${order.total.toFixed(2)}</strong>
+                                </div>
+                                ${order.tracking ? `
+                                    <div class="tracking-info">
+                                        <i class="fas fa-truck"></i>
+                                        <span>Tracking: ${order.tracking} • Delivered on ${order.deliveryDate}</span>
+                                    </div>` : ''}
+                                ${order.returnReason ? `
+                                    <div class="return-info">
+                                        <i class="fas fa-undo"></i>
+                                        <span>${order.returnReason} • ${order.refundStatus}</span>
+                                    </div>` : ''}
+                                <button class="btn btn-outline">
+                                    <i class="fas fa-redo"></i> Buy Again
+                                </button>
+                                <button class="btn">
+                                    <i class="fas fa-comment"></i> Leave Review
+                                </button>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            }
+
+            // Handle buy item clicks in the horizontal list
+            const buyItems = document.querySelectorAll('.buy-item');
+            buyItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (this.classList.contains('empty')) {
+                        // Navigate to shop or open add item modal
+                        window.location.href = '#'; // Replace with actual shop URL
+                    } else {
+                        // Find the purchases tab and activate it
+                        const purchasesTab = document.querySelector('.tab-btn[data-tab="purchases"]');
+                        if (purchasesTab) {
+                            purchasesTab.click();
+                            // Here you could scroll to the specific order if needed
+                        }
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
