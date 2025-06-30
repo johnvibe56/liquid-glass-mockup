@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>New Item - RIVO</title>
+    <meta name="description" content="Sell your items on RIVO">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pages/upload.css">
+</head>
+<body class="upload-page">
+    <!-- Top Navigation -->
+    <header class="top-bar">
+        <button class="top-bar__back" id="backButton" aria-label="Go back">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1 class="top-bar__title">New Item</h1>
+        <button class="top-bar__action" id="saveButton">
+            <span>Next</span>
+        </button>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="upload-progress">
+        <div class="upload-progress__bar" id="progressBar"></div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="upload-container">
+        <!-- Upload Form -->
+        <form id="uploadForm" class="upload-form">
+            <!-- Photo Upload -->
+            <div class="photo-upload-wrapper">
+                <div class="photo-upload">
+                    <div class="upload-preview">
+                        <div class="upload-preview-item add-photo" id="addPhotoBtn">
+                            <i class="fas fa-camera"></i>
+                            <span>Add photos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="photo-tip">
+                    <i class="fas fa-lightbulb"></i> First photo is your cover image. Tap to rearrange.
+                </div>
+            </div>
+
+            <!-- Caption & Price -->
+            <div class="form-section caption-section">
+                <div class="form-group">
+                    <textarea id="itemName" class="form-control caption-input" rows="2" placeholder="What are you selling?" required></textarea>
+                    <div class="caption-actions">
+                        <span class="price-input-wrapper">
+                            <span class="currency">$</span>
+                            <input type="number" id="itemPrice" class="price-input" placeholder="0.00" min="0" step="0.01" required>
+                        </span>
+                        <button type="button" class="btn btn-sm btn-outline" id="addDetailsBtn">
+                            <i class="fas fa-sliders-h"></i> Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item Details Panel (Initially Hidden) -->
+            <div id="detailsPanel" class="details-panel">
+                <div class="details-header">
+                    <h3>Item Details</h3>
+                    <button type="button" class="close-details" id="closeDetailsBtn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="details-content">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="itemCategory">Category</label>
+                            <select id="itemCategory" class="form-control" required>
+                                <option value="" disabled selected>Select category</option>
+                                <option value="tops">👕 Tops</option>
+                                <option value="bottoms">👖 Bottoms</option>
+                                <option value="dresses">👗 Dresses</option>
+                                <option value="outerwear">🧥 Outerwear</option>
+                                <option value="activewear">🏃 Activewear</option>
+                                <option value="shoes">👟 Shoes</option>
+                                <option value="accessories">🧢 Accessories</option>
+                                <option value="bags">👜 Bags</option>
+                                <option value="jewelry">💍 Jewelry</option>
+                                <option value="watches">⌚ Watches</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="itemCondition">Condition</label>
+                            <select id="itemCondition" class="form-control" required>
+                                <option value="" disabled selected>Select condition</option>
+                                <option value="new">✨ New with tags</option>
+                                <option value="like_new">👍 Like new</option>
+                                <option value="good">👌 Good</option>
+                                <option value="fair">✋ Fair</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="itemSize">Size</label>
+                            <input type="text" id="itemSize" class="form-control" placeholder="e.g., M, L, 9, 10">
+                        </div>
+                        <div class="form-group">
+                            <label for="itemBrand">Brand</label>
+                            <input type="text" id="itemBrand" class="form-control" placeholder="e.g., Levi's">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="itemFabric">Material</label>
+                        <input type="text" id="itemFabric" class="form-control" placeholder="e.g., 100% Cotton">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Style & Tags</label>
+                        <div class="style-tags">
+                            <div class="style-tag" data-tag="y2k">Y2K</div>
+                            <div class="style-tag" data-tag="streetwear">Streetwear</div>
+                            <div class="style-tag" data-tag="minimalist">Minimalist</div>
+                            <div class="style-tag" data-tag="grunge">Grunge</div>
+                            <div class="style-tag" data-tag="vintage">Vintage</div>
+                            <div class="style-tag" data-tag="athleisure">Athleisure</div>
+                            <div class="style-tag" data-tag="boho">Boho</div>
+                            <div class="style-tag" data-tag="preppy">Preppy</div>
+                        </div>
+                        <div class="tags-input">
+                            <input type="text" id="itemTags" class="form-control" placeholder="Add custom tags (e.g., #denim #90s #oversized)">
+                            <div class="tags-list" id="tagsList"></div>
+                        </div>
+                        <p class="form-hint">Click to add style tags or type custom tags</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-publish">
+                    <i class="fas fa-upload"></i> Publish Item
+                </button>
+            </div>
+        </form>
+
+        <!-- Success Message (Hidden by default) -->
+        <div id="successMessage" class="success-message" style="display: none;">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Item Published!</h2>
+            <p>Your item is now live and visible to buyers.</p>
+            <div class="success-actions">
+                <a href="upload.html" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Add Another Item
+                </a>
+                <a href="#" class="btn btn-outline">
+                    View Item
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="feed.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="discover.html" class="nav-item">
+            <i class="fas fa-search"></i>
+            <span>Discover</span>
+        </a>
+        <a href="upload.html" class="nav-item active">
+            <i class="fas fa-plus-circle"></i>
+            <span>Sell</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="far fa-heart"></i>
+            <span>Saved</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="far fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+    <!-- Hidden file input for photo upload -->
+    <input type="file" id="fileInput" accept="image/*" multiple style="display: none;">
+    
+    <!-- Overlay for details panel -->
+    <div id="overlay" class="overlay"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const backButton = document.getElementById('backButton');
+            const saveButton = document.getElementById('saveButton');
+            const progressBar = document.getElementById('progressBar');
+            const steps = document.querySelectorAll('.step');
+            const forms = document.querySelectorAll('.form-step');
+            const addPhotoBtn = document.getElementById('addPhotoBtn');
+            const fileInput = document.getElementById('fileInput');
+            const uploadPreview = document.querySelector('.upload-preview');
+            const addAnotherBtn = document.getElementById('addAnotherBtn');
+            const viewItemBtn = document.getElementById('viewItemBtn');
+            const itemTags = document.getElementById('itemTags');
+            const tagsList = document.getElementById('tagsList');
+            
+            // App state
+            let currentStep = 1;
+            const totalSteps = 3;
+            let selectedFiles = [];
+            let tags = [];
+            let photos = [];
+            let styleTags = [];
+
+            // Update progress bar and steps
+            function updateProgress() {
+                const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+                progressBar.style.width = `${progress}%`;
+                
+                steps.forEach(step => {
+                    const stepNum = parseInt(step.getAttribute('data-step'));
+                    step.classList.remove('active', 'completed');
+                    
+                    if (stepNum < currentStep) {
+                        step.classList.add('completed');
+                    } else if (stepNum === currentStep) {
+                        step.classList.add('active');
+                    }
+                });
+                
+                // Update active form step
+                forms.forEach(form => {
+                    form.classList.remove('active');
+                    if (parseInt(form.getAttribute('data-step')) === currentStep) {
+                        form.classList.add('active');
+                    }
+                });
+                
+                // Update save button text
+                saveButton.innerHTML = currentStep === totalSteps - 1 ? 'Publish' : 'Next';
+                
+                // Hide back button on first step
+                backButton.style.visibility = currentStep === 1 ? 'hidden' : 'visible';
+            }
+
+            
+            // Go to next step
+            function nextStep() {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    updateProgress();
+                } else if (currentStep === totalSteps) {
+                    // Submit form
+                    submitForm();
+                }
+            }
+            
+            // Go to previous step
+            function prevStep() {
+                if (currentStep > 1) {
+                    currentStep--;
+                    updateProgress();
+                } else {
+                    window.history.back();
+                }
+            }
+            
+            // Handle file selection
+            fileInput.addEventListener('change', function(e) {
+                const files = Array.from(e.target.files);
+                const imageFiles = files.filter(function(file) {
+                    return file.type.startsWith('image/');
+                });
+                
+                // Process image files
+                var maxPhotos = Math.min(imageFiles.length, 10 - photos.length);
+                for (var i = 0; i < maxPhotos; i++) {
+                    (function(file) {
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            photos.push(e.target.result);
+                            updatePhotoPreviews();
+                        };
+                        reader.readAsDataURL(file);
+                    })(imageFiles[i]);
+                }
+                
+                fileInput.value = '';
+            });
+            
+            function updatePhotoPreviews() {
+                // Clear existing previews except the add button
+                const existingPreviews = Array.from(uploadPreview.querySelectorAll('.upload-preview-item:not(.add-photo)'));
+                existingPreviews.forEach(el => el.remove());
+                
+                // Add photo previews
+                photos.forEach((photo, index) => {
+                    const previewItem = document.createElement('div');
+                    previewItem.className = 'upload-preview-item';
+                    previewItem.draggable = true;
+                    previewItem.innerHTML = `
+                        <img src="${photo}" alt="Preview">
+                        <button type="button" class="remove-photo">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    `;
+                    
+                    // Insert before the add photo button
+                    uploadPreview.insertBefore(previewItem, addPhotoBtn.parentNode);
+                    
+                    // Add drag events for reordering
+                    setupDragEvents(previewItem, index);
+                    
+                    // Add remove photo handler
+                    previewItem.querySelector('.remove-photo').addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        photos.splice(index, 1);
+                        updatePhotoPreviews();
+                    });
+                });
+                
+                // Show/hide add button based on photo count
+                addPhotoBtn.parentNode.style.display = photos.length >= 10 ? 'none' : 'flex';
+            }
+            
+            // Drag and drop for photo reordering
+            function setupDragEvents(item, index) {
+                item.addEventListener('dragstart', (e) => {
+                    e.dataTransfer.setData('text/plain', index);
+                    setTimeout(() => {
+                        item.classList.add('dragging');
+                    }, 0);
+                });
+                
+                item.addEventListener('dragend', () => {
+                    item.classList.remove('dragging');
+                });
+                
+                item.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    const draggingItem = document.querySelector('.dragging');
+                    if (draggingItem && draggingItem !== item) {
+                        const items = Array.from(uploadPreview.querySelectorAll('.upload-preview-item:not(.add-photo)'));
+                        const draggingIndex = items.indexOf(draggingItem);
+                        const targetIndex = items.indexOf(item);
+                        
+                        if (draggingIndex < targetIndex) {
+                            uploadPreview.insertBefore(draggingItem, item.nextSibling);
+                        } else {
+                            uploadPreview.insertBefore(draggingItem, item);
+                        }
+                        
+                        // Update photos array
+                        const [movedPhoto] = photos.splice(draggingIndex, 1);
+                        photos.splice(targetIndex, 0, movedPhoto);
+                    }
+                });
+            }
+            
+            // Event Listeners
+            backButton.addEventListener('click', prevStep);
+            saveButton.addEventListener('click', nextStep);
+            addPhotoBtn.addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', handleFileSelect);
+            
+            // Add another item
+            addAnotherBtn.addEventListener('click', () => {
+                // Reset form and go back to step 1
+                currentStep = 1;
+                selectedFiles = [];
+                tags = [];
+                document.getElementById('uploadForm').reset();
+                document.getElementById('attributesForm').reset();
+                updatePhotoPreviews();
+                updateTags();
+                updateProgress();
+            });
+            
+            // View item (would navigate to the item page in a real app)
+            viewItemBtn.addEventListener('click', () => {
+                alert('This would navigate to the item page in a real app.');
+            });
+            
+            // Tags
+            itemTags.addEventListener('keydown', addTag);
+            
+            // Handle tag removal
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('.remove-tag')) {
+                    const index = e.target.closest('.remove-tag').getAttribute('data-index');
+                    removeTag(index);
+                }
+            });
+            
+            // Initialize
+            updateProgress();
+            
+            // Initialize style tags
+            function initializeTagHandling() {
+                const styleTagElements = document.querySelectorAll('.style-tag');
+                
+                // Handle style tag clicks
+                styleTagElements.forEach(tag => {
+                    tag.addEventListener('click', function() {
+                        this.classList.toggle('active');
+                        const tagValue = this.getAttribute('data-tag');
+                        
+                        if (this.classList.contains('active')) {
+                            if (!tags.includes(tagValue)) {
+                                tags.push(tagValue);
+                            }
+                        } else {
+                            tags = tags.filter(t => t !== tagValue);
+                        }
+                        updateTags();
+                    });
+                });
+                
+                return styleTagElements;
+            }
+            
+            // Initialize tag handling
+            const styleTags = initializeTagHandling();
+            
+            // Handle custom tag input
+            itemTags.addEventListener('keydown', function(e) {
+                if ((e.key === 'Enter' || e.key === ' ' || e.key === ',') && this.value.trim() !== '') {
+                    e.preventDefault();
+                    const tag = this.value.trim().replace(/[,#]/g, '').toLowerCase();
+                    if (tag && tag.length > 1 && !tags.includes(tag)) {
+                        tags.push(tag);
+                        updateTags();
+                    }
+                    this.value = '';
+                }
+            });
+            
+            // Update tags display
+            function updateTags() {
+                if (!tagsList) return;
+                
+                tagsList.innerHTML = '';
+                tags.forEach((tag, index) => {
+                    const tagElement = document.createElement('div');
+                    tagElement.className = 'tag';
+                    tagElement.innerHTML = `
+                        ${tag}
+                        <span class="tag-remove" data-index="${index}">&times;</span>
+                    `;
+                    tagsList.appendChild(tagElement);
+                });
+
+                // Update style tags active state
+                styleTags.forEach(styleTag => {
+                    const tagValue = styleTag.getAttribute('data-tag');
+                    if (tags.includes(tagValue)) {
+                        styleTag.classList.add('active');
+                    } else {
+                        styleTag.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Remove tag when clicking the x
+            if (tagsList) {
+                tagsList.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('tag-remove')) {
+                        const index = e.target.getAttribute('data-index');
+                        tags.splice(index, 1);
+                        updateTags();
+                    }
+                });
+            }
+            
+            // Initialize photo previews
+            updatePhotoPreviews();
+            
+            // Initialize form submission
+            uploadForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show loading state
+                const submitBtn = uploadForm.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Publishing...';
+                
+                // Simulate API call
+                setTimeout(() => {
+                    // Reset form
+                    uploadForm.reset();
+                    photos = [];
+                    updatePhotoPreviews();
+                    
+                    // Show success message
+                    showSuccessMessage();
+                    
+                    // Reset button
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnText;
+                }, 1500);
+            });
+            
+            // Show success message
+            function showSuccessMessage() {
+                // Create success message element if it doesn't exist
+                let successMsg = document.createElement('div');
+                successMsg.className = 'success-message';
+                successMsg.innerHTML = `
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h2>Item Published!</h2>
+                    <p>Your item is now live and visible to potential buyers.</p>
+                    <div class="success-actions">
+                        <button id="addAnotherBtn" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Add Another Item
+                        </button>
+                        <button id="viewItemBtn" class="btn btn-outline">
+                            View Item
+                        </button>
+                    </div>
+                `;
+                
+                // Clear form and show success message
+                uploadForm.style.display = 'none';
+                document.querySelector('.upload-container').appendChild(successMsg);
+                
+                // Add event listeners to buttons
+                document.getElementById('addAnotherBtn').addEventListener('click', () => {
+                    successMsg.remove();
+                    uploadForm.style.display = 'block';
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+                
+                document.getElementById('viewItemBtn').addEventListener('click', () => {
+                    // In a real app, this would navigate to the item page
+                    alert('This would navigate to the item page in a real app.');
+                });
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            
+            // Prevent drag and drop file upload for now
+            document.addEventListener('dragover', (e) => {
+                e.preventDefault();
+            });
+            
+            document.addEventListener('drop', function(e) {
+                e.preventDefault();
+            });
+        });
+    </script>
+</body>
+</html>

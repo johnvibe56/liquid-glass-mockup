@@ -41,12 +41,63 @@
         }
 
         .test-content {
-            margin-top: 80px;
+            margin-top: 140px;
             padding: 20px;
+        }
+
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .top-bar__title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .top-bar__spacer {
+            flex-grow: 1;
         }
     </style>
 </head>
-<body>
+<body class="glass-test-page">
+    <!-- Top Navigation -->
+    <header class="top-bar">
+        <div class="container">
+            <button id="backButton" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1 class="top-bar__title">Glass Test</h1>
+            <div class="top-bar__spacer"></div>
+        </div>
+    </header>
+    
     <header class="test-header">
         <h1>Glass Effect Test</h1>
         <p>This is a test header with glass effect</p>

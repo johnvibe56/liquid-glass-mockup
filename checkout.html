@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Checkout - Liquid Glass</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pages/checkout.css">
+</head>
+<body class="checkout-page">
+    <!-- Top Navigation -->
+    <nav class="top-bar">
+        <button class="top-bar__back" id="backButton" aria-label="Go back">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1 class="top-bar__title">Checkout</h1>
+        <div class="top-bar__spacer"></div>
+        <div class="top-bar__right">
+            <!-- Empty for now, can add action buttons if needed -->
+        </div>
+    </nav>
+
+    <main class="checkout-container">
+        <!-- Order Summary -->
+        <section class="checkout-section order-summary">
+            <h2 class="section-title">Order Summary</h2>
+            <div class="product-preview">
+                <div class="gallery-container" style="width: 100px; height: 100px; border-radius: 12px; overflow: hidden;">
+                    <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'); background-size: cover; background-position: center;"></div>
+                </div>
+                <div class="product-details">
+                    <h3 class="product-name">Vintage Denim Jacket</h3>
+                    <p class="product-price">$89.99</p>
+                    <p class="product-size">Size: M</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Delivery Address -->
+        <section class="checkout-section delivery-address">
+            <div class="section-header">
+                <h2 class="section-title">Delivery Address</h2>
+                <button class="btn-text" id="changeAddressBtn">Change</button>
+            </div>
+            <div class="address-card">
+                <div class="address-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="address-details">
+                    <p class="address-name">John Doe</p>
+                    <p class="address-street">123 Fashion Street</p>
+                    <p class="address-city">New York, NY 10001</p>
+                    <p class="address-phone">+1 (555) 123-4567</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Payment Method -->
+        <section class="checkout-section payment-method">
+            <div class="section-header">
+                <h2 class="section-title">Payment Method</h2>
+                <button class="btn-text" id="changePaymentBtn">Change</button>
+            </div>
+            <div class="payment-card">
+                <div class="payment-icon">
+                    <i class="fab fa-cc-apple-pay"></i>
+                </div>
+                <div class="payment-details">
+                    <p class="payment-type">Apple Pay</p>
+                    <p class="payment-info">•••• •••• •••• 4242</p>
+                </div>
+                <div class="payment-radio">
+                    <input type="radio" name="payment" id="applePay" checked>
+                    <label for="applePay"></label>
+                </div>
+            </div>
+            <div class="payment-card">
+                <div class="payment-icon">
+                    <i class="far fa-credit-card"></i>
+                </div>
+                <div class="payment-details">
+                    <p class="payment-type">Credit Card</p>
+                    <p class="payment-info">Add a credit or debit card</p>
+                </div>
+                <div class="payment-radio">
+                    <input type="radio" name="payment" id="creditCard">
+                    <label for="creditCard"></label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Order Summary -->
+        <section class="checkout-section order-total">
+            <h2 class="section-title">Order Summary</h2>
+            <div class="price-row">
+                <span>Subtotal</span>
+                <span>$89.99</span>
+            </div>
+            <div class="price-row">
+                <span>Shipping</span>
+                <span>$4.99</span>
+            </div>
+            <div class="price-row total">
+                <span>Total</span>
+                <span>$94.98</span>
+            </div>
+        </section>
+
+        <!-- Note to Seller -->
+        <section class="checkout-section note-section">
+            <h2 class="section-title">Note to Seller (Optional)</h2>
+            <textarea class="form-control" placeholder="Add a note about your order" rows="3"></textarea>
+        </section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="feed.html" class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Feed</span>
+        </a>
+        <a href="discover.html" class="nav-item">
+            <i class="fas fa-compass"></i>
+            <span>Discover</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="far fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+    <!-- Confirm & Pay Button -->
+    <div class="checkout-footer">
+        <div class="total-amount">
+            <span>Total</span>
+            <span class="amount">$94.98</span>
+        </div>
+        <button class="btn btn-primary btn-block" id="confirmPaymentBtn">
+            Confirm & Pay
+        </button>
+    </div>
+
+    <!-- Checkout Script -->
+    <script src="js/checkout.js" type="module"></script>
+    <script>
+        // Prevent navbar.js from attaching scroll events
+        window.preventNavbarScroll = true;
+    </script>
+    <script src="js/components/navigation/navbar.js"></script>
+</body>
+</html>

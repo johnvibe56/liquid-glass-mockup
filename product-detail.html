@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Product Details - RIVO</title>
+    <meta name="description" content="View product details on RIVO">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pages/product-detail.css">
+</head>
+<body class="product-detail-page">
+    <!-- Top Navigation -->
+    <nav class="top-bar">
+        <a href="discover.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            <span class="back-text">Back to Products</span>
+        </a>
+        <h1 class="product-title-hidden">Product Title</h1>
+    </nav>
+
+    <main class="product-container">
+        <!-- Image Gallery -->
+        <section class="product-gallery">
+            <div class="gallery-container">
+                <div class="gallery-track">
+                    <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
+                    <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80&crop=entropy&cs=tinysrgb&fit=crop&h=1000&w=1000');"></div>
+                    <div class="gallery-slide" style="background-image: url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80&crop=entropy&cs=tinysrgb&fit=crop&h=1000&w=1000');"></div>
+                </div>
+            </div>
+            <div class="gallery-pagination">
+                <span class="pagination-dot active"></span>
+                <span class="pagination-dot"></span>
+                <span class="pagination-dot"></span>
+            </div>
+        </section>
+
+        <!-- Product Info -->
+        <section class="product-info">
+            <div class="product-header">
+                <h1 class="product-title">Vintage Denim Jacket</h1>
+                <div class="product-price">$89.99</div>
+            </div>
+            
+            <div class="product-description">
+                <p>Authentic vintage denim jacket from the 90s. Lightly worn with a perfect faded wash. Features a classic trucker cut with front button closure and four total pockets.</p>
+                <button class="read-more">Read more</button>
+            </div>
+
+            <!-- Key Info Block -->
+            <div class="key-info">
+                <div class="info-item">
+                    <span class="info-label">Size</span>
+                    <span class="info-value">M</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Fabric</span>
+                    <span class="info-value">100% Cotton</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Condition</span>
+                    <span class="info-value">Excellent</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Brand</span>
+                    <span class="info-value">Levi's</span>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="action-button save">
+                    <i class="far fa-heart"></i>
+                </button>
+                <button class="action-button share">
+                    <i class="fas fa-share"></i>
+                </button>
+                <a href="checkout.html" class="primary-button buy-now" style="text-decoration: none; display: flex; align-items: center; justify-content: center;">
+                    Buy Now
+                </a>
+            </div>
+
+            <!-- Seller Info -->
+            <div class="seller-info">
+                <div class="seller-avatar">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Seller">
+                </div>
+                <div class="seller-details">
+                    <div class="seller-name">Sarah Johnson</div>
+                    <div class="seller-rating">
+                        <i class="fas fa-star"></i>
+                        <span>4.8 (127 reviews)</span>
+                    </div>
+                </div>
+                <a href="#" class="message-button">Message</a>
+            </div>
+        </section>
+
+        <!-- You May Also Like -->
+        <section class="recommended-products">
+            <h2>You May Also Like</h2>
+            <div class="products-scroll">
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80');"></div>
+                    <div class="product-details">
+                        <h3>Classic White Sneakers</h3>
+                        <p class="price">$59.99</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1576871337622-98d48d1cf531?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80');"></div>
+                    <div class="product-details">
+                        <h3>Leather Crossbody Bag</h3>
+                        <p class="price">$79.99</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1526170375885-4edd8febfcf6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80');"></div>
+                    <div class="product-details">
+                        <h3>Vintage Camera</h3>
+                        <p class="price">$129.99</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Spacer for bottom navigation -->
+        <div class="bottom-spacer"></div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="feed.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Feed</span>
+        </a>
+        <a href="discover.html" class="nav-item">
+            <i class="fas fa-compass"></i>
+            <span>Discover</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="far fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+    <script src="js/components/navigation/navbar.js"></script>
+    <script>
+        // Gallery functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.querySelector('.gallery-track');
+            const slides = Array.from(track.children);
+            const dots = Array.from(document.querySelectorAll('.pagination-dot'));
+            
+            // Update dots on slide change
+            const updateDots = (currentIndex) => {
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            };
+            
+            // Handle touch events for swiping
+            let touchStartX = 0;
+            let touchEndX = 0;
+            let currentIndex = 0;
+            
+            track.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, false);
+            
+            track.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, false);
+            
+            const handleSwipe = () => {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0 && currentIndex < slides.length - 1) {
+                        // Swipe left
+                        currentIndex++;
+                    } else if (diff < 0 && currentIndex > 0) {
+                        // Swipe right
+                        currentIndex--;
+                    }
+                    updateSlidePosition();
+                }
+            };
+            
+            const updateSlidePosition = () => {
+                const slideWidth = track.parentElement.offsetWidth;
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                updateDots(currentIndex);
+                
+                // Update title in top bar when scrolled past gallery
+                const title = document.querySelector('.product-title-hidden');
+                const gallery = document.querySelector('.product-gallery');
+                const galleryBottom = gallery.offsetTop + gallery.offsetHeight;
+                
+                if (window.scrollY > galleryBottom - 60) {
+                    title.classList.add('visible');
+                } else {
+                    title.classList.remove('visible');
+                }
+            };
+            
+            // Handle window resize
+            window.addEventListener('resize', updateSlidePosition);
+            
+            // Handle scroll for title visibility
+            window.addEventListener('scroll', () => {
+                const title = document.querySelector('.product-title-hidden');
+                const gallery = document.querySelector('.product-gallery');
+                const galleryBottom = gallery.offsetTop + gallery.offsetHeight;
+                
+                if (window.scrollY > galleryBottom - 60) {
+                    title.classList.add('visible');
+                } else {
+                    title.classList.remove('visible');
+                }
+            });
+            
+            // Click on dots to navigate
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateSlidePosition();
+                });
+            });
+            
+            // Read more functionality
+            const readMoreBtn = document.querySelector('.read-more');
+            const description = document.querySelector('.product-description p');
+            
+            readMoreBtn.addEventListener('click', () => {
+                description.classList.toggle('expanded');
+                readMoreBtn.textContent = description.classList.contains('expanded') ? 'Read less' : 'Read more';
+            });
+        });
+    </script>
+</body>
+</html>

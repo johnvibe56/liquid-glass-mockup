@@ -1,4 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Skip initialization if navbar scroll is prevented
+    if (window.preventNavbarScroll) {
+        const bottomNav = document.querySelector('.bottom-nav');
+        const topBar = document.querySelector('.top-bar');
+        
+        if (bottomNav) {
+            bottomNav.classList.add('scrolled');
+            bottomNav.style.pointerEvents = 'none';
+        }
+        
+        if (topBar) {
+            topBar.classList.add('scrolled');
+            topBar.style.transform = 'translateY(-100%)';
+        }
+        return; // Exit early
+    }
+    
     const bottomNav = document.querySelector('.bottom-nav');
     const topBar = document.querySelector('.top-bar');
     const scrollThreshold = 50; // Pixels to scroll before triggering the effect
