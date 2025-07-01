@@ -12,43 +12,7 @@
     padding: 16px;
 }
 
-/* Top Bar */
-.top-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 12px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.top-bar__back {
-    background: rgba(0, 0, 0, 0.05);
-    border: none;
-    width: 36px;
-    height: 36px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #1a1a2e;
-    font-size: 1rem;
-    padding: 0;
-    margin: 0;
-    transition: all 0.2s ease;
-}
-
-.top-bar__back:active {
-    transform: scale(0.95);
-    background: rgba(0, 0, 0, 0.1);
-}
+/* Top Bar - Using global styles instead */
 
 .top-bar__title {
     font-size: 1.1rem;
@@ -58,22 +22,7 @@
     letter-spacing: -0.3px;
 }
 
-.top-bar__action {
-    background: #000000;
-    border: none;
-    color: white;
-    font-weight: 600;
-    font-size: 0.9rem;
-    padding: 8px 16px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
-}
-
-.top-bar__action:active {
-    transform: translateY(1px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
+/* Using global top-bar__action styles */
 
 /* Form Layout */
 .upload-form {

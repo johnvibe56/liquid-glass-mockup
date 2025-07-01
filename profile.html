@@ -12,12 +12,20 @@
 </head>
 <body class="profile-page" data-page="profile">
     <!-- Top Navigation -->
-    <nav class="top-bar">
+    <header class="top-bar">
+        <div class="top-bar__left">
+            <!-- Empty on profile page -->
+        </div>
         <h1 class="top-bar__title">Profile</h1>
-        <button class="top-bar__search" id="searchBox" aria-label="Search">
-            <i class="fas fa-search"></i>
-        </button>
-    </nav>
+        <div class="top-bar__right">
+            <a href="settings.html" class="top-bar__action" aria-label="Settings">
+                <i class="fas fa-cog"></i>
+            </a>
+            <a href="upload.html" class="top-bar__action" aria-label="Add New Item" style="margin-left: 12px;">
+                <i class="fas fa-plus"></i>
+            </a>
+        </div>
+    </header>
     
     <!-- Scroll Progress Indicator -->
     <div class="scroll-progress"></div>
